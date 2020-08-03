@@ -1,0 +1,29 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.router-link-active {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.spacer {
+  flex: 1 0 auto;
+}
+
+main {
+  padding: 32px;
+}

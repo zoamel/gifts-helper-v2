@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <span>Gifts Helper</span>
+  <div class="spacer"></div>
+
+  <div *ngIf="angularFireAuth.user | async">
+    <button mat-icon-button aria-label="Log out" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<main>
+  <ng-content></ng-content>
+</main>

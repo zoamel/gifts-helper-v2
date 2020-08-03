@@ -1,0 +1,23 @@
+$max-width: 320px;
+
+.container {
+  padding-top: 64px;
+}
+
+.title {
+  font-size: 2.1rem;
+}
+
+.main-image {
+  width: $max-width;
+  padding-bottom: 32px;
+}
+
+.form-container {
+  width: $max-width;
+}
+
+.login-button {
+  width: 180px;
+  margin-top: 32px;
+}

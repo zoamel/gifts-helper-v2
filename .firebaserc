@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "gifts-helper": {
+      "hosting": {
+        "gifts-helper": [
+          "gifts-helper"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "gifts-helper"
+  }
+}
