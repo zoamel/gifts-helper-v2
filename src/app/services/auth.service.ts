@@ -9,7 +9,12 @@ import {
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { User } from './user.model';
+export interface User {
+  uid: string;
+  email: string;
+  photoURL?: string;
+  displayName?: string;
+}
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

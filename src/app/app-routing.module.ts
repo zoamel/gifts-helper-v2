@@ -13,6 +13,14 @@ const routes: Routes = [
     canLoad: [AuthGuard],
   },
   {
+    path: 'wishlist',
+    loadChildren: () =>
+      import('./features/wishlist/wishlist.module').then(
+        (m) => m.WishlistModule
+      ),
+    canLoad: [AuthGuard],
+  },
+  {
     path: 'login',
     loadChildren: () =>
       import('./features/login/login.module').then((m) => m.LoginModule),
