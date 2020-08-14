@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { WishlistDialogData } from '../../shared/interfaces';
-import { urlRegexPatter } from '../../shared/constants';
+import { urlRegexPattern } from '../../shared/constants';
 
 @Component({
   selector: 'app-wishlist-item-add',
@@ -13,7 +13,7 @@ import { urlRegexPatter } from '../../shared/constants';
 export class WishlistItemAddComponent implements OnInit {
   newItemForm = this.fb.group({
     name: ['', Validators.required],
-    url: ['', Validators.pattern(urlRegexPatter)],
+    url: ['', Validators.pattern(urlRegexPattern)],
     note: '',
     public: true,
   });

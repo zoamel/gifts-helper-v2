@@ -1,3 +1,8 @@
+.main-container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
 .empty-state__image {
   max-width: 320px;
 }
@@ -8,15 +13,41 @@
 
 .add-item-button {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 32px;
+  right: 32px;
 }
 
-.show-details__image {
-  max-width: 180px;
+.top-section {
+  margin-bottom: 32px;
+
+  .page-header {
+    margin: 0;
+    padding: 0;
+  }
 }
 
-.show-details__text {
-  margin-top: 24px;
-  font-size: 1.1rem;
+.cards-container {
+  padding: 0 8px;
+  max-height: calc(100vh - 200px);
+  overflow: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.card {
+  &:not(:first-of-type) {
+    margin-top: 16px;
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}
+
+.details-icon {
+  color: rgba(0, 0, 0, 0.54);
 }

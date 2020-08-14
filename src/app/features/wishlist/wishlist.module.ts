@@ -10,14 +10,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { SharedModule } from '../../shared/shared.module';
 import { WishlistRoutingModule } from './wishlist-routing.module';
 import { WishlistViewComponent } from './screens/wishlist-view/wishlist-view.component';
 import { WishlistItemAddComponent } from './components/wishlist-item-add/wishlist-item-add.component';
+import { WishlistItemEditComponent } from './components/wishlist-item-edit/wishlist-item-edit.component';
 
 @NgModule({
-  declarations: [WishlistViewComponent, WishlistItemAddComponent],
+  declarations: [
+    WishlistViewComponent,
+    WishlistItemAddComponent,
+    WishlistItemEditComponent,
+  ],
   imports: [
     ReactiveFormsModule,
     SharedModule,
@@ -31,6 +37,7 @@ import { WishlistItemAddComponent } from './components/wishlist-item-add/wishlis
     MatDialogModule,
     MatCheckboxModule,
     MatExpansionModule,
+    MatDividerModule,
     WishlistRoutingModule,
   ],
   exports: [],

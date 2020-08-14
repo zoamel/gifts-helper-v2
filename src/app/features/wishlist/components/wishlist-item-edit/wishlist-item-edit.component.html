@@ -1,6 +1,6 @@
-<h1 mat-dialog-title>Add New Wishlist Item</h1>
+<h1 mat-dialog-title>Edit {{ data.name }}</h1>
 <div mat-dialog-content>
-  <form class="new-item-form" [formGroup]="newItemForm" fxLayout="column">
+  <form class="new-item-form" [formGroup]="editItemForm" fxLayout="column">
     <mat-form-field appearance="outline">
       <mat-label>Item Name</mat-label>
       <input
@@ -35,6 +35,8 @@
         formControlName="note"
         rows="6"
       ></textarea>
+
+      <mat-hint>{{ note?.value.length }} / 160</mat-hint>
     </mat-form-field>
   </form>
 </div>
@@ -42,7 +44,7 @@
   <button mat-stroked-button color="warn" (click)="handleCancel()">
     Cancel
   </button>
-  <button mat-raised-button color="primary" (click)="handleAddItem()">
+  <button mat-raised-button color="primary" (click)="handleSaveItem()">
     Save
   </button>
 </div>

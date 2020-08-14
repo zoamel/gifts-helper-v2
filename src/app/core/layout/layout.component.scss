@@ -25,5 +25,9 @@
 }
 
 main {
-  padding: 32px;
+  padding: 16px;
+
+  @media screen and (min-width: 960px) {
+    padding: 32px;
+  }
 }

@@ -18,7 +18,9 @@ export class WishlistService {
         if (user) {
           return this.db
             .collection<WishListItem>('wishItems', (ref) =>
-              ref.where('createdBy.uid', '==', user.uid)
+              ref
+                .where('createdBy.uid', '==', user.uid)
+                .orderBy('createdAt', 'desc')
             )
             .valueChanges({ idField: 'id' });
         } else {
@@ -33,11 +35,28 @@ export class WishlistService {
 
     return this.db.collection('wishItems').add({
       ...data,
+      createdAt: new Date(),
       updatedAt: new Date(),
       createdBy: {
         displayName: user?.displayName,
         uid: user?.uid,
       },
     });
+  }
+
+  updateItem(item: WishListItem): Promise<void> {
+    const payload: Partial<WishListItem> = {
+      name: item.name,
+      url: item.url,
+      note: item.note,
+      // @ts-ignore
+      updatedAt: new Date(),
+    };
+
+    return this.db.collection('wishItems').doc(item.id).update(payload);
+  }
+
+  deleteItem(itemId: string): Promise<void> {
+    return this.db.collection('wishItems').doc(itemId).delete();
   }
 }

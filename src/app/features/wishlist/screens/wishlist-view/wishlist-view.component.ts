@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { WishListItem } from '../../../../models/wishlist.interface';
 import { WishlistService } from '../../../../services/wishlist.service';
 import { WishlistItemAddComponent } from '../../components/wishlist-item-add/wishlist-item-add.component';
-import { MatSelectionListChange } from '@angular/material/list';
+import { WishlistItemEditComponent } from '../../components/wishlist-item-edit/wishlist-item-edit.component';
 
 @Component({
   selector: 'app-wishlist-view',
@@ -14,7 +14,6 @@ import { MatSelectionListChange } from '@angular/material/list';
 })
 export class WishlistViewComponent implements OnInit {
   wishList$: Observable<WishListItem[]> | undefined;
-  selectedItem: WishListItem | null = null;
 
   constructor(
     private listsService: WishlistService,
@@ -27,7 +26,8 @@ export class WishlistViewComponent implements OnInit {
 
   showAddItemDialog(): void {
     const dialogRef = this.dialog.open(WishlistItemAddComponent, {
-      width: '480px',
+      width: '95%',
+      maxWidth: '480px',
     });
 
     dialogRef.afterClosed().subscribe((result: WishListItem) => {
@@ -37,7 +37,26 @@ export class WishlistViewComponent implements OnInit {
     });
   }
 
-  handleSelectItem(event: MatSelectionListChange): void {
-    this.selectedItem = event.option.value as WishListItem;
+  showEditItemDialog(item: WishListItem): void {
+    const dialogRef = this.dialog.open(WishlistItemEditComponent, {
+      width: '95%',
+      maxWidth: '480px',
+      data: item,
+    });
+
+    dialogRef.afterClosed().subscribe((result: WishListItem) => {
+      if (result) {
+        const updatedItem = {
+          ...item,
+          ...result,
+        };
+
+        this.listsService.updateItem(updatedItem);
+      }
+    });
+  }
+
+  handleDeleteItem(itemId: string): void {
+    this.listsService.deleteItem(itemId);
   }
 }

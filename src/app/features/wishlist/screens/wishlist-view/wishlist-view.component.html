@@ -1,56 +1,95 @@
 <div class="main-container">
   <div *ngIf="wishList$ | async as wishList; else loading">
-    <div *ngIf="wishList.length > 0; else emptyState" fxLayout="row">
-      <div fxFlex="50%" fxLayout="column" fxLayoutGap="30px">
-        <mat-selection-list
-          [multiple]="false"
-          (selectionChange)="handleSelectItem($event)"
+    <div *ngIf="wishList.length > 0; else emptyState">
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="top-section"
+      >
+        <h1 class="page-header">Your wish list</h1>
+
+        <button
+          *ngIf="wishList.length > 0"
+          (click)="showAddItemDialog()"
+          mat-mini-fab
+          color="primary"
+          aria-label="Add new item"
         >
-          <mat-list-option *ngFor="let listItem of wishList" [value]="listItem">
-            {{ listItem.name }}
-          </mat-list-option>
-        </mat-selection-list>
+          <mat-icon>add</mat-icon>
+        </button>
       </div>
 
-      <div fxFlex="50%">
-        <div
+      <div class="cards-container">
+        <mat-card
           fxLayout="column"
-          fxLayoutAlign="center center"
-          *ngIf="!selectedItem"
+          class="card"
+          *ngFor="let listItem of wishList"
         >
-          <img
-            src="/assets/images/undraw_online_information_4ui6.svg"
-            alt="Show item details"
-            class="show-details__image"
-          />
-          <p class="show-details__text">
-            Click list item to show more details
-          </p>
-        </div>
+          <div fxFill fxLayout="column" fxLayoutGap="16px">
+            <h1 class="card__title">{{ listItem.name }}</h1>
 
-        <div
-          fxLayout="column"
-          fxLayoutAlign="center center"
-          *ngIf="selectedItem"
-        >
-          <h1>{{ selectedItem.name }}</h1>
-          <a [href]="selectedItem.url">Link</a>
-          <p>{{ selectedItem.note }}</p>
-        </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+              <mat-icon class="details-icon">link</mat-icon>
+              <a
+                *ngIf="listItem.url"
+                [href]="listItem.url"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Link to shop
+              </a>
+
+              <span *ngIf="!listItem.url">
+                <i>No link provided</i>
+              </span>
+            </div>
+
+            <div
+              fxHide.lt-sm="true"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="16px"
+            >
+              <mat-icon class="details-icon">note</mat-icon>
+              <span *ngIf="listItem.note">{{ listItem.note }}</span>
+              <span *ngIf="!listItem.note"><i>No note provided</i></span>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+              <mat-icon class="details-icon">update</mat-icon>
+              <span>
+                Last updated on
+                {{ listItem.updatedAt.toDate() | date: 'longDate' }}
+              </span>
+            </div>
+
+            <div
+              class="card__actions"
+              fxFlex
+              fxLayout="row"
+              fxLayoutAlign="end end"
+              fxLayoutGap="8px"
+            >
+              <button
+                (click)="handleDeleteItem(listItem.id)"
+                mat-stroked-button
+                color="warn"
+              >
+                Delete
+              </button>
+              <button
+                (click)="showEditItemDialog(listItem)"
+                mat-stroked-button
+                color="primary"
+              >
+                Edit
+              </button>
+            </div>
+          </div>
+        </mat-card>
       </div>
     </div>
   </div>
-
-  <button
-    *ngIf="(wishList$ | async)?.length > 0"
-    (click)="showAddItemDialog()"
-    class="add-item-button"
-    mat-fab
-    color="primary"
-    aria-label="Add new item"
-  >
-    <mat-icon>add</mat-icon>
-  </button>
 </div>
 
 <ng-template #loading>
