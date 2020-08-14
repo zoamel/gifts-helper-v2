@@ -25,10 +25,10 @@
       </a>
       <a
         mat-list-item
-        [routerLink]="['/users']"
+        [routerLink]="['/profiles']"
         routerLinkActive="router-link-active"
       >
-        Users
+        Profiles
       </a>
     </mat-nav-list>
   </mat-sidenav>
@@ -44,13 +44,6 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Gifts Helper</span>
-      <div class="spacer"></div>
-
-      <div *ngIf="angularFireAuth.user | async">
-        <button mat-icon-button aria-label="Log out" (click)="logout()">
-          <mat-icon>exit_to_app</mat-icon>
-        </button>
-      </div>
     </mat-toolbar>
     <main>
       <ng-content></ng-content>

@@ -13,19 +13,13 @@
 
 .add-item-button {
   position: fixed;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
+  right: 32px;
   top: 27px;
   z-index: 10;
 
   @media screen and (min-width: 960px) {
     top: initial;
-    left: initial;
     bottom: 32px;
-    right: 32px;
-    margin: auto;
   }
 }
 

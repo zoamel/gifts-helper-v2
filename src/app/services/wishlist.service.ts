@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { WishListItem } from '../models/wishlist.interface';
+import { User } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,12 @@ export class WishlistService {
         }
       })
     );
+  }
+
+  searchForUser(email: string) {
+    return this.db
+      .collection<User>('users', (ref) => ref.where('email', '==', email))
+      .valueChanges({ idField: 'uid' });
   }
 
   async addItem(data: Partial<WishListItem>): Promise<DocumentReference> {
