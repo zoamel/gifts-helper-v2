@@ -48,7 +48,6 @@ export class WishlistService {
     const payload: Partial<WishListItem> = {
       name: item.name,
       url: item.url,
-      note: item.note,
       // @ts-ignore
       updatedAt: new Date(),
     };

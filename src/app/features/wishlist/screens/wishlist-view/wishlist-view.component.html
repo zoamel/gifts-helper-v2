@@ -11,9 +11,10 @@
         <button
           *ngIf="wishList.length > 0"
           (click)="showAddItemDialog()"
-          mat-mini-fab
-          color="primary"
+          mat-fab
+          color="accent"
           aria-label="Add new item"
+          class="add-item-button"
         >
           <mat-icon>add</mat-icon>
         </button>
@@ -42,17 +43,6 @@
               <span *ngIf="!listItem.url">
                 <i>No link provided</i>
               </span>
-            </div>
-
-            <div
-              fxHide.lt-sm="true"
-              fxLayout="row"
-              fxLayoutAlign="start center"
-              fxLayoutGap="16px"
-            >
-              <mat-icon class="details-icon">note</mat-icon>
-              <span *ngIf="listItem.note">{{ listItem.note }}</span>
-              <span *ngIf="!listItem.note"><i>No note provided</i></span>
             </div>
 
             <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">

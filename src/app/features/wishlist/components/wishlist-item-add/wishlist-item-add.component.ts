@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -10,11 +10,10 @@ import { urlRegexPattern } from '../../shared/constants';
   templateUrl: './wishlist-item-add.component.html',
   styleUrls: ['./wishlist-item-add.component.scss'],
 })
-export class WishlistItemAddComponent implements OnInit {
+export class WishlistItemAddComponent {
   newItemForm = this.fb.group({
     name: ['', Validators.required],
     url: ['', Validators.pattern(urlRegexPattern)],
-    note: '',
     public: true,
   });
 
@@ -26,17 +25,11 @@ export class WishlistItemAddComponent implements OnInit {
     return this.newItemForm.get('url');
   }
 
-  get note(): AbstractControl | null {
-    return this.newItemForm.get('note');
-  }
-
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<WishlistItemAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: WishlistDialogData
   ) {}
-
-  ngOnInit(): void {}
 
   handleCancel(): void {
     this.dialogRef.close();

@@ -7,7 +7,6 @@ export interface WishListItem {
   };
   id: string;
   name: string;
-  note?: string;
   url?: string;
   mostWanted?: boolean;
   public: boolean;

@@ -4,11 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:prod": "ng serve --prod -o",
-    "build": "ng build",
-    "build:prod": "ng build --prod",
+    "build": "ng build --prod",
     "test": "ng test",
-    "watch": "ng test --watch --reporters spec",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "analyze": "npm-run-all analyze:*",

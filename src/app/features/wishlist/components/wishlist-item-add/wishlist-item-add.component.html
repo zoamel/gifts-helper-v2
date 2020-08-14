@@ -20,24 +20,16 @@
       <input
         matInput
         placeholder="Link to some online store"
+        type="url"
         formControlName="url"
       />
       <mat-error *ngIf="url?.invalid && url?.errors?.pattern">
         This is not a valid link
       </mat-error>
     </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Notes</mat-label>
-      <textarea
-        matInput
-        placeholder="Info about this item"
-        formControlName="note"
-        rows="6"
-      ></textarea>
-    </mat-form-field>
   </form>
 </div>
+
 <div mat-dialog-actions>
   <button mat-stroked-button color="warn" (click)="handleCancel()">
     Cancel
