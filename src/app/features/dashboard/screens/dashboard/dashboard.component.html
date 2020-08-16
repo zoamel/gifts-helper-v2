@@ -1,3 +1,10 @@
 <div class="main-container">
-  <h1>At the moment you are not buying present for anyone</h1>
+  <div *ngFor="let userItems of itemsToBuy$ | async | keyvalue">
+    <h1>Items For {{ userItems.value[0].createdBy.displayName }}</h1>
+    <ul>
+      <li *ngFor="let item of userItems.value">
+        {{ item.name }}
+      </li>
+    </ul>
+  </div>
 </div>

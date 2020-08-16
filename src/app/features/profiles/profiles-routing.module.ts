@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ProfileSearchComponent } from './screens/profile-search/profile-search.component';
+import { ProfilesListComponent } from './screens/profiles-list/profiles-list.component';
+import { ProfileWishlistComponent } from './screens/profile-wishlist/profile-wishlist.component';
 
-const routes: Routes = [{ path: '', component: ProfileSearchComponent }];
+const routes: Routes = [
+  { path: '', component: ProfilesListComponent },
+  {
+    path: ':id',
+    component: ProfileWishlistComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

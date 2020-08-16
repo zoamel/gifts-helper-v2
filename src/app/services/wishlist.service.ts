@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { switchMap, take } from 'rxjs/operators';
 
 import { WishListItem } from '../models/wishlist.interface';
-import { User } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WishlistService {
+  private itemsToBuySubject = new BehaviorSubject<WishListItem[]>([]);
+  private requestInProgressSubject = new BehaviorSubject<boolean>(false);
+
+  public readonly itemsToBuy = this.itemsToBuySubject.asObservable();
+  public readonly requestInProgress = this.requestInProgressSubject.asObservable();
+
   constructor(private afAuth: AngularFireAuth, private db: AngularFirestore) {}
 
   getUserWishList(): Observable<WishListItem[]> {
@@ -31,10 +36,21 @@ export class WishlistService {
     );
   }
 
-  searchForUser(email: string) {
-    return this.db
-      .collection<User>('users', (ref) => ref.where('email', '==', email))
-      .valueChanges({ idField: 'uid' });
+  getItemsToBuy(): void {
+    this.afAuth.authState.pipe(take(1)).subscribe((user) => {
+      if (user) {
+        this.db
+          .collection<WishListItem>('wishItems', (ref) =>
+            ref
+              .where('public', '==', true)
+              .where('assignedUsers', 'array-contains', user.uid)
+          )
+          .valueChanges({ idField: 'id' })
+          .subscribe((items) => {
+            this.itemsToBuySubject.next(items);
+          });
+      }
+    });
   }
 
   async addItem(data: Partial<WishListItem>): Promise<DocumentReference> {

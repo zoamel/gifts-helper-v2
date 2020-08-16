@@ -1,0 +1,31 @@
+<div class="search-container" fxLayout="column" fxLayoutAlign="center">
+  <mat-form-field
+    class="form-field"
+    appearance="outline"
+    (keyup.enter)="submit()"
+  >
+    <mat-label>Search by email</mat-label>
+    <input
+      [formControl]="searchTerm"
+      type="email"
+      placeholder="example@gmail.com"
+      matInput
+      autofocus
+    />
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="submit()"
+    [disabled]="requestInProgress"
+  >
+    Search
+  </button>
+
+  <mat-progress-bar
+    *ngIf="requestInProgress"
+    class="progress-bar"
+    mode="indeterminate"
+  ></mat-progress-bar>
+</div>

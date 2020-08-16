@@ -1,0 +1,7 @@
+<app-wishlist
+  mode="visitor"
+  [data]="wishListItems$ | async"
+  [currentUser]="authUser"
+  (saveItem)="assignItem($event)"
+  (removeItem)="unassignItem($event)"
+></app-wishlist>

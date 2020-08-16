@@ -1,0 +1,36 @@
+<app-profile-search
+  (searchSubmit)="handleSearchSubmit($event)"
+  [requestInProgress]="requestInProgress$ | async"
+></app-profile-search>
+
+<mat-divider class="divider"></mat-divider>
+
+<div
+  class="profiles-container"
+  fxLayout="column"
+  fxLayoutAlign="start stretch"
+  *ngIf="profiles$ | async as profiles"
+>
+  <ng-container *ngIf="profiles.length > 0; else emptyState">
+    <app-profile-card
+      *ngFor="let profile of profiles"
+      [profile]="profile"
+    ></app-profile-card>
+  </ng-container>
+</div>
+
+<ng-template #emptyState>
+  <section
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    *ngIf="searchPhraseSubmitted"
+  >
+    <h1>No Profile Found</h1>
+
+    <img
+      src="/assets/images/undraw_not_found_60pq.svg"
+      alt="No results"
+      class="empty-state__image"
+    />
+  </section>
+</ng-template>
