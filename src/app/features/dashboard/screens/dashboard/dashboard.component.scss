@@ -1,0 +1,20 @@
+.section-container {
+  margin-top: 64px;
+}
+
+.list-item {
+  margin-bottom: 16px;
+}
+
+.item-name {
+  font-size: 1.1rem;
+}
+
+.item-bought {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.spacer {
+  flex: 1;
+}

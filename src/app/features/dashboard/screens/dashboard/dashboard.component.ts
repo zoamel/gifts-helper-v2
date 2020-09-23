@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 import { WishlistService } from '../../../../services/wishlist.service';
 import { WishListItem } from '../../../../models/wishlist.interface';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,5 +36,17 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.wishlistService.getItemsToBuy();
+  }
+
+  handleMarkItemAsBought(item: WishListItem): void {
+    if (item.bought) {
+      this.wishlistService.unMarkItemAsBought(item.id);
+    } else {
+      this.wishlistService.markItemAsBought(item.id);
+    }
+  }
+
+  unassignFromItem(item: WishListItem): void {
+    this.wishlistService.unassignFromItem(item.id);
   }
 }

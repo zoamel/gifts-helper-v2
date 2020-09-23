@@ -5,6 +5,7 @@ export interface WishListItem {
     uid: string;
     displayName: string;
   };
+  bought: boolean;
   assignedUsers?: string[];
   id: string;
   name: string;

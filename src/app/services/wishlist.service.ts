@@ -3,8 +3,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
+import * as firebase from 'firebase/app';
 
 import { WishListItem } from '../models/wishlist.interface';
+import { UiService } from './ui.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +18,11 @@ export class WishlistService {
   public readonly itemsToBuy = this.itemsToBuySubject.asObservable();
   public readonly requestInProgress = this.requestInProgressSubject.asObservable();
 
-  constructor(private afAuth: AngularFireAuth, private db: AngularFirestore) {}
+  constructor(
+    private afAuth: AngularFireAuth,
+    private db: AngularFirestore,
+    private uiService: UiService
+  ) {}
 
   getUserWishList(): Observable<WishListItem[]> {
     return this.afAuth.authState.pipe(
@@ -63,6 +69,7 @@ export class WishlistService {
       createdBy: {
         displayName: user?.displayName,
         uid: user?.uid,
+        photoURL: user?.photoURL,
       },
     });
   }
@@ -76,6 +83,32 @@ export class WishlistService {
     };
 
     return this.db.collection('wishItems').doc(item.id).update(payload);
+  }
+
+  markItemAsBought(itemId: string): Promise<void> {
+    return this.db.collection('wishItems').doc(itemId).update({
+      bought: true,
+    });
+  }
+
+  unMarkItemAsBought(itemId: string): Promise<void> {
+    return this.db.collection('wishItems').doc(itemId).update({
+      bought: false,
+    });
+  }
+
+  async unassignFromItem(itemId: string): Promise<void> {
+    const user = await this.afAuth.currentUser;
+
+    return this.db
+      .collection<WishListItem>('wishItems')
+      .doc(itemId)
+      .update({
+        assignedUsers: firebase.firestore.FieldValue.arrayRemove(user?.uid),
+      })
+      .then(() => {
+        this.uiService.showSnackbar('Item unassigned');
+      });
   }
 
   deleteItem(itemId: string): Promise<void> {
