@@ -5,7 +5,7 @@
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
+    [opened]="(isHandset$ | async) || !(authService.user$ | async) === false"
   >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
@@ -44,6 +44,14 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Gifts Helper</span>
+      <div class="spacer"></div>
+      <button
+        *ngIf="authService.user$ | async"
+        mat-flat-button
+        (click)="logout()"
+      >
+        Logout
+      </button>
     </mat-toolbar>
     <main>
       <ng-content></ng-content>
