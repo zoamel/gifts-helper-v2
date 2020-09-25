@@ -2,6 +2,10 @@
   margin-top: 64px;
 }
 
+.loading-container {
+  margin-top: 32px;
+}
+
 .list-item {
   margin-bottom: 16px;
 }
@@ -17,4 +21,14 @@
 
 .spacer {
   flex: 1;
+}
+
+.empty-state {
+  &__image {
+    max-width: 320px;
+  }
+
+  &__selection-container {
+    margin-top: 32px;
+  }
 }

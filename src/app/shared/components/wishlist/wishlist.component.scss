@@ -1,13 +1,13 @@
-.cards-container {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
 .card {
   &__title {
     font-size: 1rem;
     font-weight: 500;
+    margin: 0;
+  }
+
+  &__info-text {
+    margin: 0;
+    opacity: 0.5;
   }
 }
 

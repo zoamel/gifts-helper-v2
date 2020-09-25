@@ -54,7 +54,10 @@ export class ProfilesService {
 
     this.db
       .collection<WishListItem>('wishItems', (ref) =>
-        ref.where('createdBy.uid', '==', profileId).where('public', '==', true)
+        ref
+          .where('createdBy.uid', '==', profileId)
+          .where('public', '==', true)
+          .where('bought', '==', false)
       )
       .valueChanges({ idField: 'id' })
       .subscribe(
@@ -75,9 +78,6 @@ export class ProfilesService {
       .doc(itemId)
       .update({
         assignedUsers: firebase.firestore.FieldValue.arrayUnion(userId),
-      })
-      .then(() => {
-        this.uiService.showSnackbar('Item assigned to you');
       });
   }
 
@@ -87,9 +87,6 @@ export class ProfilesService {
       .doc(itemId)
       .update({
         assignedUsers: firebase.firestore.FieldValue.arrayRemove(userId),
-      })
-      .then(() => {
-        this.uiService.showSnackbar('Item unassigned');
       });
   }
 }

@@ -12,6 +12,10 @@
       matInput
       autofocus
     />
+    <mat-hint>
+      You can see other people wish lists by searching for them by their email
+      address
+    </mat-hint>
   </mat-form-field>
 
   <button
@@ -19,6 +23,7 @@
     color="primary"
     (click)="submit()"
     [disabled]="requestInProgress"
+    class="search-button"
   >
     Search
   </button>

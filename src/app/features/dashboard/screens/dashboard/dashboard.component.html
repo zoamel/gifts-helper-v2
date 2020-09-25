@@ -1,39 +1,81 @@
 <div class="main-container">
-  <h1>List of people you want to buy present for</h1>
-  <hr />
-
   <div
-    *ngFor="let userItems of itemsToBuy$ | async | keyvalue"
-    class="section-container"
+    class="loading-container"
+    fxLayoutAlign="center"
+    *ngIf="requestInProgress$ | async"
   >
-    <h2 class="person-name">{{ userItems.value[0].createdBy?.displayName }}</h2>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
 
-    <mat-card
-      *ngFor="let item of userItems.value"
-      fxLayoutAlign="start center"
-      class="list-item"
+  <div *ngIf="numberOfItems$ | async; else emptyState">
+    <h1>List of people you want to buy present for</h1>
+    <hr />
+
+    <div
+      *ngFor="let userItems of itemsToBuy$ | async | keyvalue"
+      class="section-container"
     >
-      <span class="item-name" [class.item-bought]="item.bought">
-        {{ item.name }}
-      </span>
+      <h2 class="person-name">
+        {{ userItems.value[0].createdBy?.displayName }}
+      </h2>
 
-      <div class="spacer"></div>
+      <mat-card
+        *ngFor="let item of userItems.value"
+        fxLayoutAlign="start center"
+        class="list-item"
+      >
+        <span class="item-name" [class.item-bought]="item.bought">
+          {{ item.name }}
+        </span>
 
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
+        <div class="spacer"></div>
 
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="handleMarkItemAsBought(item)">
-          <mat-icon>done</mat-icon>
-          <span *ngIf="!item.bought">Mark as bought</span>
-          <span *ngIf="item.bought">Mark as not bought</span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
         </button>
-        <button mat-menu-item (click)="unassignFromItem(item)">
-          <mat-icon>delete</mat-icon>
-          <span>Remove from your list</span>
-        </button>
-      </mat-menu>
-    </mat-card>
+
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="handleMarkItemAsBought(item)">
+            <mat-icon>done</mat-icon>
+            <span *ngIf="!item.bought">Mark as bought</span>
+            <span *ngIf="item.bought">Mark as not bought</span>
+          </button>
+          <button
+            mat-menu-item
+            (click)="unassignFromItem(item)"
+            [disabled]="item.bought"
+          >
+            <mat-icon>delete</mat-icon>
+            <span>Remove from your list</span>
+          </button>
+        </mat-menu>
+      </mat-card>
+    </div>
   </div>
 </div>
+
+<ng-template #emptyState>
+  <div class="empty-state__container" fxLayout="column">
+    <h1>It seems that you don't want to buy a gift for anyone, yet...</h1>
+
+    <div
+      fxLayout.lt-md="column"
+      fxLayout="row"
+      fxLayoutAlign="space-around center"
+      fxLayoutGap.lt-md="32px"
+      class="empty-state__selection-container"
+    >
+      <button mat-raised-button color="primary" [routerLink]="['/wishlist']">
+        Go to your wish list
+      </button>
+      <img
+        src="/assets/images/undraw_no_data_qbuo.svg"
+        alt="santa claus"
+        class="empty-state__image"
+      />
+      <button mat-raised-button color="accent" [routerLink]="['/profiles']">
+        Search for others wishlist
+      </button>
+    </div>
+  </div>
+</ng-template>

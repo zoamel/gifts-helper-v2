@@ -66,6 +66,7 @@ export class WishlistService {
       ...data,
       createdAt: new Date(),
       updatedAt: new Date(),
+      bought: false,
       createdBy: {
         displayName: user?.displayName,
         uid: user?.uid,

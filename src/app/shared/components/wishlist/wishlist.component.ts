@@ -26,6 +26,21 @@ export class WishlistComponent implements OnInit {
     }
   }
 
+  isSomeoneBuying(listItem: WishListItem): boolean {
+    if (
+      listItem.assignedUsers &&
+      listItem.assignedUsers.length !== 0 &&
+      this.currentUser
+    ) {
+      return (
+        listItem.assignedUsers.length > 1 ||
+        !listItem.assignedUsers.includes(this.currentUser.uid)
+      );
+    } else {
+      return false;
+    }
+  }
+
   assignItem(item: WishListItem): void {
     this.saveItem.emit(item);
   }

@@ -13,9 +13,14 @@ import { WishListItem } from '../../../../models/wishlist.interface';
 export class DashboardComponent implements OnInit {
   itemsToBuy$: Observable<Record<string, WishListItem[]>>;
   requestInProgress$: Observable<boolean>;
+  numberOfItems$: Observable<number>;
 
   constructor(private wishlistService: WishlistService) {
     this.requestInProgress$ = wishlistService.requestInProgress;
+
+    this.numberOfItems$ = wishlistService.itemsToBuy.pipe(
+      map((items) => items.length)
+    );
 
     this.itemsToBuy$ = wishlistService.itemsToBuy.pipe(
       map((items) => {

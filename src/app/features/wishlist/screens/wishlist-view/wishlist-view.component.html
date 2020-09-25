@@ -20,46 +20,38 @@
         </button>
       </div>
 
-      <div class="cards-container">
+      <div class="cards-container" fxLayout="column" fxLayoutGap="32px">
         <mat-card
           fxLayout="column"
           class="card"
           *ngFor="let listItem of wishList"
         >
-          <div fxFill fxLayout="column" fxLayoutGap="16px">
-            <h1 class="card__title">{{ listItem.name }}</h1>
+          <div fxFill fxLayout="column">
+            <div fxLayoutAlign="space-between center">
+              <h1 class="card__title">{{ listItem.name }}</h1>
 
-            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
-              <mat-icon class="details-icon">link</mat-icon>
-              <a
-                *ngIf="listItem.url"
-                [href]="listItem.url"
-                target="_blank"
-                rel="noopener noreferrer"
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                fxLayoutGap="8px"
               >
-                Link to shop
-              </a>
+                <mat-icon class="details-icon">link</mat-icon>
+                <a
+                  *ngIf="listItem.url"
+                  [href]="listItem.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Go to shop
+                </a>
 
-              <span *ngIf="!listItem.url">
-                <i>No link provided</i>
-              </span>
+                <span *ngIf="!listItem.url">
+                  <i>No link provided</i>
+                </span>
+              </div>
             </div>
 
-            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
-              <mat-icon class="details-icon">update</mat-icon>
-              <span>
-                Last updated on
-                {{ listItem.updatedAt.toDate() | date: 'longDate' }}
-              </span>
-            </div>
-
-            <div
-              class="card__actions"
-              fxFlex
-              fxLayout="row"
-              fxLayoutAlign="end end"
-              fxLayoutGap="8px"
-            >
+            <div class="card__actions" fxFlex fxLayout="row" fxLayoutGap="8px">
               <button
                 (click)="handleDeleteItem(listItem.id)"
                 mat-stroked-button
@@ -96,9 +88,7 @@
       alt="No Data"
     />
 
-    <h1 class="mat-title empty-state__heading">
-      Your wishlist is empty
-    </h1>
+    <h1 class="mat-title empty-state__heading">Your wishlist is empty</h1>
 
     <button (click)="showAddItemDialog()" mat-raised-button color="primary">
       Add first item

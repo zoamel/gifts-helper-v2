@@ -1,62 +1,71 @@
-<div class="cards-container">
+<div
+  class="cards-container"
+  *ngIf="currentUser"
+  fxLayout="column"
+  fxLayoutGap="32px"
+>
+  <h1>{{ currentUser?.displayName }} wishlist</h1>
+
+  <div *ngIf="data.length == 0">
+    <h1>No item added yet</h1>
+  </div>
+
   <mat-card fxLayout="column" class="card" *ngFor="let listItem of data">
-    <div fxFill fxLayout="column" fxLayoutGap="16px">
+    <div fxFill fxLayout="column">
       <div fxLayoutAlign="space-between start">
-        <h1 class="card__title">{{ listItem.name }}</h1>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+          <mat-icon *ngIf="isItemAssigned(listItem)" color="primary">
+            check_circle
+          </mat-icon>
 
-        <mat-icon *ngIf="isItemAssigned(listItem)" color="primary">
-          assignment_turned_in
-        </mat-icon>
-      </div>
+          <mat-icon *ngIf="!isItemAssigned(listItem)" color="primary">
+            help_outline
+          </mat-icon>
 
-      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
-        <mat-icon class="details-icon">link</mat-icon>
-        <a
-          *ngIf="listItem.url"
-          [href]="listItem.url"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Link to shop
-        </a>
+          <h1 class="card__title">{{ listItem.name }}</h1>
+        </div>
 
-        <span *ngIf="!listItem.url">
-          <i>No link provided</i>
-        </span>
-      </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+          <mat-icon class="details-icon">link</mat-icon>
+          <a
+            *ngIf="listItem.url"
+            [href]="listItem.url"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link to shop
+          </a>
 
-      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
-        <mat-icon class="details-icon">update</mat-icon>
-        <span>
-          Last updated on
-          {{ listItem.updatedAt.toDate() | date: 'longDate' }}
-        </span>
+          <span *ngIf="!listItem.url">
+            <i>No link provided</i>
+          </span>
+        </div>
       </div>
 
       <div
         class="card__actions"
         fxFlex
         fxLayout="row"
-        fxLayoutAlign="end end"
+        [fxLayoutAlign]="
+          isSomeoneBuying(listItem) ? 'space-between end' : 'end end'
+        "
         fxLayoutGap="8px"
       >
+        <p *ngIf="isSomeoneBuying(listItem)" class="card__info-text">
+          Someone already want to buy this item
+        </p>
+
         <ng-container *ngIf="mode === 'visitor'">
           <button
             mat-stroked-button
-            color="warn"
-            (click)="unassignItem(listItem)"
-            [disabled]="!isItemAssigned(listItem)"
+            [color]="isItemAssigned(listItem) ? 'warn' : 'primary'"
+            (click)="
+              isItemAssigned(listItem)
+                ? unassignItem(listItem)
+                : assignItem(listItem)
+            "
           >
-            Unassign
-          </button>
-
-          <button
-            mat-stroked-button
-            color="primary"
-            (click)="assignItem(listItem)"
-            [disabled]="isItemAssigned(listItem)"
-          >
-            Assign
+            {{ isItemAssigned(listItem) ? "Don't want to buy" : 'Want to buy' }}
           </button>
         </ng-container>
       </div>

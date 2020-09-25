@@ -3,14 +3,14 @@
   [requestInProgress]="requestInProgress$ | async"
 ></app-profile-search>
 
-<mat-divider class="divider"></mat-divider>
-
 <div
   class="profiles-container"
   fxLayout="column"
   fxLayoutAlign="start stretch"
   *ngIf="profiles$ | async as profiles"
 >
+  <mat-divider class="divider"></mat-divider>
+
   <ng-container *ngIf="profiles.length > 0; else emptyState">
     <app-profile-card
       *ngFor="let profile of profiles"
