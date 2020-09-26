@@ -11,15 +11,19 @@ import { ProfilesService } from '../../../../services/profiles.service';
 })
 export class ProfilesListComponent implements OnInit {
   profiles$: Observable<User[] | null>;
+  observedProfiles$: Observable<User[] | null>;
   requestInProgress$: Observable<boolean>;
   searchPhraseSubmitted = false;
 
   constructor(private profilesService: ProfilesService) {
     this.profiles$ = profilesService.profiles;
+    this.observedProfiles$ = profilesService.observedProfiles;
     this.requestInProgress$ = profilesService.requestInProgress;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.profilesService.getObservedProfiles();
+  }
 
   handleSearchSubmit(value: string): void {
     this.searchPhraseSubmitted = true;

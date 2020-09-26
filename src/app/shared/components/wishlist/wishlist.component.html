@@ -1,10 +1,23 @@
-<div
-  class="cards-container"
-  *ngIf="currentUser"
-  fxLayout="column"
-  fxLayoutGap="32px"
->
-  <h1>{{ currentUser?.displayName }} wishlist</h1>
+<div class="cards-container" fxLayout="column" fxLayoutGap="32px">
+  <div *ngIf="selectedProfile && isVisitor">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+      <h1 class="selected-profile__name">
+        {{ selectedProfile.displayName }} wishlist
+      </h1>
+      <button
+        mat-stroked-button
+        [color]="isObserved ? 'warn' : 'primary'"
+        (click)="
+          isObserved
+            ? unObserveProfile(selectedProfile)
+            : observeProfile(selectedProfile)
+        "
+      >
+        {{ isObserved ? 'Remove from observed' : 'Add to observed' }}
+      </button>
+    </div>
+    <hr />
+  </div>
 
   <div *ngIf="data.length == 0">
     <h1>No item added yet</h1>

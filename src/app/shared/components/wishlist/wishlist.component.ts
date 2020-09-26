@@ -12,11 +12,19 @@ export class WishlistComponent implements OnInit {
   @Input() data: WishListItem[] = [];
   @Input() mode: 'owner' | 'visitor' = 'visitor';
   @Input() currentUser: User | undefined;
+  @Input() selectedProfile: User | null | undefined;
+  @Input() isObserved = false;
 
   @Output() saveItem = new EventEmitter<WishListItem>();
   @Output() removeItem = new EventEmitter<WishListItem>();
+  @Output() addProfileToObserved = new EventEmitter<User>();
+  @Output() removeProfileFromObserved = new EventEmitter<User>();
 
   ngOnInit(): void {}
+
+  get isVisitor(): boolean {
+    return this.mode === 'visitor';
+  }
 
   isItemAssigned(listItem: WishListItem): boolean {
     if (listItem.assignedUsers && this.currentUser) {
@@ -39,6 +47,14 @@ export class WishlistComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  observeProfile(profile: User): void {
+    this.addProfileToObserved.emit(profile);
+  }
+
+  unObserveProfile(profile: User): void {
+    this.removeProfileFromObserved.emit(profile);
   }
 
   assignItem(item: WishListItem): void {

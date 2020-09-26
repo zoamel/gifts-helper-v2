@@ -1,3 +1,29 @@
+<div
+  *ngIf="observedProfiles$ | async as observedProfiles"
+  class="observed-profiles__container"
+>
+  <p class="mat-title">Observed Users</p>
+  <ul>
+    <li
+      *ngFor="let userProfile of observedProfiles"
+      class="observed-profiles__item"
+      fxLayoutAlign="start center"
+      fxLayoutGap="16px"
+      [routerLink]="['/profiles', userProfile.uid]"
+    >
+      <img
+        class="observed-profiles__image"
+        [src]="userProfile.photoURL"
+        [alt]="userProfile.displayName"
+      />
+
+      <span class="observed-profiles__name">{{ userProfile.displayName }}</span>
+    </li>
+  </ul>
+
+  <hr />
+</div>
+
 <app-profile-search
   (searchSubmit)="handleSearchSubmit($event)"
   [requestInProgress]="requestInProgress$ | async"

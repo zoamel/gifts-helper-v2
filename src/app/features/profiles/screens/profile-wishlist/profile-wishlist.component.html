@@ -2,6 +2,10 @@
   mode="visitor"
   [data]="wishListItems$ | async"
   [currentUser]="authUser"
+  [selectedProfile]="profileData$ | async"
+  [isObserved]="isObserved"
   (saveItem)="assignItem($event)"
   (removeItem)="unassignItem($event)"
+  (addProfileToObserved)="observeProfile($event)"
+  (removeProfileFromObserved)="unObserveProfile($event)"
 ></app-wishlist>
