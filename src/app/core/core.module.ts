@@ -7,11 +7,17 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 import { LayoutComponent } from './layout/layout.component';
+import { FeedbackModalComponent } from './feedback-modal/feedback-modal.component';
 
 @NgModule({
-  declarations: [LayoutComponent],
+  declarations: [LayoutComponent, FeedbackModalComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -21,6 +27,11 @@ import { LayoutComponent } from './layout/layout.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   exports: [LayoutComponent],
 })

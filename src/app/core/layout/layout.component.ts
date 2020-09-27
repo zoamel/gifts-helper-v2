@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MatDialog } from '@angular/material/dialog';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import { AuthService } from '../../services/auth.service';
+import { FeedbackService } from '../../services/feedback.service';
+import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
 
 @Component({
   selector: 'app-layout',
@@ -22,8 +25,21 @@ export class LayoutComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     public angularFireAuth: AngularFireAuth,
-    public authService: AuthService
+    public authService: AuthService,
+    private feedbackService: FeedbackService,
+    public dialog: MatDialog
   ) {}
+
+  openFeedbackDialog(): void {
+    const dialogRef = this.dialog.open(FeedbackModalComponent, {
+      width: '480px',
+      minHeight: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.feedbackService.sendFeedback(result);
+    });
+  }
 
   logout(): void {
     this.authService.signOut().then(() => {

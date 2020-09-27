@@ -54,6 +54,15 @@
       <div class="spacer"></div>
       <button
         *ngIf="authService.user$ | async"
+        mat-icon-button
+        class="feedback-button"
+        aria-label="Send feedback"
+        (click)="openFeedbackDialog()"
+      >
+        <mat-icon>feedback</mat-icon>
+      </button>
+      <button
+        *ngIf="authService.user$ | async"
         mat-flat-button
         (click)="logout()"
       >
