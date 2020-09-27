@@ -6,6 +6,7 @@ export interface WishListItem {
     displayName: string;
   };
   bought: boolean;
+  boughtBy: string;
   assignedUsers?: string[];
   id: string;
   name: string;

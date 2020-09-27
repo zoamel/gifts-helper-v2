@@ -43,6 +43,8 @@ export class WishlistService {
   }
 
   getItemsToBuy(): void {
+    this.requestInProgressSubject.next(true);
+
     this.afAuth.authState.pipe(take(1)).subscribe((user) => {
       if (user) {
         this.db
@@ -54,6 +56,7 @@ export class WishlistService {
           .valueChanges({ idField: 'id' })
           .subscribe((items) => {
             this.itemsToBuySubject.next(items);
+            this.requestInProgressSubject.next(false);
           });
       }
     });

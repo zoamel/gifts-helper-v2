@@ -14,7 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 import { LayoutComponent } from './layout/layout.component';
-import { FeedbackModalComponent } from './feedback-modal/feedback-modal.component';
+import { FeedbackModalComponent } from './layout/components/feedback-modal/feedback-modal.component';
 
 @NgModule({
   declarations: [LayoutComponent, FeedbackModalComponent],

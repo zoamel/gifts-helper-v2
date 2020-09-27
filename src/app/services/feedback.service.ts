@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { switchMap, take } from 'rxjs/operators';
-import * as firebase from 'firebase/app';
+import { AngularFirestore } from '@angular/fire/firestore';
 
-import { FeedbackData } from '../core/feedback-modal/feedback-modal.component';
+import { FeedbackData } from '../core/layout/components/feedback-modal/feedback-modal.component';
 import { UiService } from './ui.service';
 
 @Injectable({

@@ -1,26 +1,5 @@
-.section-container {
-  margin-top: 64px;
-}
-
 .loading-container {
-  margin-top: 32px;
-}
-
-.list-item {
-  margin-bottom: 16px;
-}
-
-.item-name {
-  font-size: 1.1rem;
-}
-
-.item-bought {
-  text-decoration: line-through;
-  color: rgba(0, 0, 0, 0.26);
-}
-
-.spacer {
-  flex: 1;
+  margin-top: 16px;
 }
 
 .empty-state {
@@ -31,4 +10,34 @@
   &__selection-container {
     margin-top: 32px;
   }
+}
+
+.section-container {
+  margin-top: 32px;
+
+  @media (min-width: 768px) {
+    margin-top: 64px;
+  }
+}
+
+.list-card {
+  margin-bottom: 16px;
+  padding: 10px;
+
+  @media (min-width: 768px) {
+    margin-top: 16px;
+  }
+
+  &__name {
+    font-size: 1.1rem;
+  }
+
+  &__name--bought {
+    text-decoration: line-through;
+    color: rgba(0, 0, 0, 0.26);
+  }
+}
+
+.spacer {
+  flex: 1;
 }
