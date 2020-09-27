@@ -3,7 +3,9 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { WishlistService } from '../../../../services/wishlist.service';
+import { AuthService } from '../../../../services/auth.service';
 import { WishListItem } from '../../../../models/wishlist.interface';
+import { User } from '../../../..//models/user.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,8 +16,14 @@ export class DashboardComponent implements OnInit {
   itemsToBuy$: Observable<Record<string, WishListItem[]>>;
   requestInProgress$: Observable<boolean>;
   numberOfItems$: Observable<number>;
+  user$: Observable<User | null | undefined>;
 
-  constructor(private wishlistService: WishlistService) {
+  constructor(
+    private wishlistService: WishlistService,
+    private authService: AuthService
+  ) {
+    this.user$ = this.authService.user$;
+
     this.requestInProgress$ = wishlistService.requestInProgress;
 
     this.numberOfItems$ = wishlistService.itemsToBuy.pipe(

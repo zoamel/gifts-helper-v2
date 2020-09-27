@@ -4,6 +4,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { SharedModule } from '../../shared/shared.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
@@ -18,6 +19,7 @@ import { DashboardComponent } from './screens/dashboard/dashboard.component';
     MatButtonModule,
     MatCardModule,
     MatMenuModule,
+    MatChipsModule,
     DashboardRoutingModule,
   ],
 })

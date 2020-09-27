@@ -1,4 +1,4 @@
-<div class="main-container">
+<div class="main-container" *ngIf="user$ | async as user">
   <div
     class="loading-container"
     fxLayoutAlign="center"
@@ -22,11 +22,16 @@
       <mat-card
         *ngFor="let item of userItems.value"
         fxLayoutAlign="start center"
+        fxLayoutGap="16px"
         class="list-item"
       >
         <span class="item-name" [class.item-bought]="item.bought">
           {{ item.name }}
         </span>
+
+        <mat-chip-list *ngIf="item.boughtBy !== user?.uid && item.bought">
+          <mat-chip color="warn" selected>Someone already bought it!</mat-chip>
+        </mat-chip-list>
 
         <div class="spacer"></div>
 
@@ -35,7 +40,11 @@
         </button>
 
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="handleMarkItemAsBought(item)">
+          <button
+            mat-menu-item
+            (click)="handleMarkItemAsBought(item)"
+            [disabled]="item.bought && item.boughtBy !== user?.uid"
+          >
             <mat-icon>done</mat-icon>
             <span *ngIf="!item.bought">Mark as bought</span>
             <span *ngIf="item.bought">Mark as not bought</span>
@@ -43,7 +52,7 @@
           <button
             mat-menu-item
             (click)="unassignFromItem(item)"
-            [disabled]="item.bought"
+            [disabled]="item.bought && item.boughtBy === user?.uid"
           >
             <mat-icon>delete</mat-icon>
             <span>Remove from your list</span>

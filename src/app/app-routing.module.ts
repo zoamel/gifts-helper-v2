@@ -34,6 +34,11 @@ const routes: Routes = [
       import('./features/login/login.module').then((m) => m.LoginModule),
   },
   {
+    path: 'faq',
+    loadChildren: () =>
+      import('./features/faq/faq.module').then((m) => m.FaqModule),
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'dashboard',

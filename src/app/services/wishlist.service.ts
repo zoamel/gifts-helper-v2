@@ -86,15 +86,19 @@ export class WishlistService {
     return this.db.collection('wishItems').doc(item.id).update(payload);
   }
 
-  markItemAsBought(itemId: string): Promise<void> {
+  async markItemAsBought(itemId: string): Promise<void> {
+    const user = await this.afAuth.currentUser;
+
     return this.db.collection('wishItems').doc(itemId).update({
       bought: true,
+      boughtBy: user?.uid,
     });
   }
 
   unMarkItemAsBought(itemId: string): Promise<void> {
     return this.db.collection('wishItems').doc(itemId).update({
       bought: false,
+      boughtBy: null,
     });
   }
 
@@ -106,9 +110,6 @@ export class WishlistService {
       .doc(itemId)
       .update({
         assignedUsers: firebase.firestore.FieldValue.arrayRemove(user?.uid),
-      })
-      .then(() => {
-        this.uiService.showSnackbar('Item unassigned');
       });
   }
 
