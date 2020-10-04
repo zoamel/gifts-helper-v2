@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 
-import { FeedbackData } from '../core/layout/components/feedback-modal/feedback-modal.component';
+import { FeedbackData } from '../core/feedback-modal/feedback-modal.component';
 import { UiService } from './ui.service';
 
 @Injectable({

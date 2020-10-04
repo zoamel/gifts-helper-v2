@@ -1,3 +1,5 @@
+@import '../../../styles/mixins.scss';
+
 .sidenav-container {
   height: 100%;
 }
@@ -17,7 +19,7 @@
 }
 
 .router-link-active {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: rgba(0, 0, 0, 0.07);
 }
 
 .spacer {
@@ -31,7 +33,7 @@
 main {
   padding: 16px;
 
-  @media screen and (min-width: 960px) {
+  @include screen('tablet-landscape') {
     padding: 32px;
     max-width: 1140px;
     margin: 0 auto;

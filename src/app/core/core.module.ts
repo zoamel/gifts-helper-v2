@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -12,9 +13,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { LayoutComponent } from './layout/layout.component';
-import { FeedbackModalComponent } from './layout/components/feedback-modal/feedback-modal.component';
+import { FeedbackModalComponent } from './feedback-modal/feedback-modal.component';
 
 @NgModule({
   declarations: [LayoutComponent, FeedbackModalComponent],
@@ -32,6 +35,8 @@ import { FeedbackModalComponent } from './layout/components/feedback-modal/feedb
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatTooltipModule,
+    MatSnackBarModule,
   ],
   exports: [LayoutComponent],
 })

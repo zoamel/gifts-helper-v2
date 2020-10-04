@@ -7,7 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 import { AuthService } from '../../services/auth.service';
 import { FeedbackService } from '../../services/feedback.service';
-import { FeedbackModalComponent } from './components/feedback-modal/feedback-modal.component';
+import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
 
 @Component({
   selector: 'app-layout',
