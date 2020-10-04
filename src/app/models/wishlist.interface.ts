@@ -11,8 +11,7 @@ export interface WishListItem {
   id: string;
   name: string;
   url?: string;
-  mostWanted?: boolean;
-  public: boolean;
+  note?: string;
   createdAt: Timestamp;
   updatedAt: Timestamp;
 }

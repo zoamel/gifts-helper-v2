@@ -36,27 +36,4 @@ export class WishlistViewComponent implements OnInit {
       }
     });
   }
-
-  showEditItemDialog(item: WishListItem): void {
-    const dialogRef = this.dialog.open(WishlistItemEditComponent, {
-      width: '95%',
-      maxWidth: '480px',
-      data: item,
-    });
-
-    dialogRef.afterClosed().subscribe((result: WishListItem) => {
-      if (result) {
-        const updatedItem = {
-          ...item,
-          ...result,
-        };
-
-        this.listsService.updateItem(updatedItem);
-      }
-    });
-  }
-
-  handleDeleteItem(itemId: string): void {
-    this.listsService.deleteItem(itemId);
-  }
 }

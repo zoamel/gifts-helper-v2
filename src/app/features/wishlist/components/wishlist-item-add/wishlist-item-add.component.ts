@@ -14,7 +14,7 @@ export class WishlistItemAddComponent {
   newItemForm = this.fb.group({
     name: ['', Validators.required],
     url: ['', Validators.pattern(urlRegexPattern)],
-    public: true,
+    note: [''],
   });
 
   get name(): AbstractControl | null {
@@ -23,6 +23,10 @@ export class WishlistItemAddComponent {
 
   get url(): AbstractControl | null {
     return this.newItemForm.get('url');
+  }
+
+  get note(): AbstractControl | null {
+    return this.newItemForm.get('note');
   }
 
   constructor(

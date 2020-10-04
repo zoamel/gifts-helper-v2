@@ -8,66 +8,19 @@
       >
         <h1 class="page-header">Your wish list</h1>
 
-        <button
-          *ngIf="wishList.length > 0"
-          (click)="showAddItemDialog()"
-          mat-fab
-          color="accent"
-          aria-label="Add new item"
-          class="add-item-button"
-        >
+        <button (click)="showAddItemDialog()" mat-mini-fab color="accent">
           <mat-icon>add</mat-icon>
         </button>
       </div>
 
-      <div class="cards-container" fxLayout="column" fxLayoutGap="32px">
+      <div class="cards-container" fxLayout="column" fxLayoutGap="24px">
         <mat-card
           fxLayout="column"
           class="card"
           *ngFor="let listItem of wishList"
+          [routerLink]="['/wishlist/item', listItem.id]"
         >
-          <div fxFill fxLayout="column">
-            <div fxLayoutAlign="space-between center">
-              <h1 class="card__title">{{ listItem.name }}</h1>
-
-              <div
-                fxLayout="row"
-                fxLayoutAlign="start center"
-                fxLayoutGap="8px"
-              >
-                <mat-icon class="details-icon">link</mat-icon>
-                <a
-                  *ngIf="listItem.url"
-                  [href]="listItem.url"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Go to shop
-                </a>
-
-                <span *ngIf="!listItem.url">
-                  <i>No link provided</i>
-                </span>
-              </div>
-            </div>
-
-            <div class="card__actions" fxFlex fxLayout="row" fxLayoutGap="8px">
-              <button
-                (click)="handleDeleteItem(listItem.id)"
-                mat-stroked-button
-                color="warn"
-              >
-                Delete
-              </button>
-              <button
-                (click)="showEditItemDialog(listItem)"
-                mat-stroked-button
-                color="primary"
-              >
-                Edit
-              </button>
-            </div>
-          </div>
+          <h1 class="card__title">{{ listItem.name }}</h1>
         </mat-card>
       </div>
     </div>

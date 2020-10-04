@@ -67,10 +67,7 @@ export class ProfilesService {
 
     this.db
       .collection<WishListItem>('wishItems', (ref) =>
-        ref
-          .where('createdBy.uid', '==', profileId)
-          .where('public', '==', true)
-          .where('bought', '==', false)
+        ref.where('createdBy.uid', '==', profileId).where('bought', '==', false)
       )
       .valueChanges({ idField: 'id' })
       .subscribe(

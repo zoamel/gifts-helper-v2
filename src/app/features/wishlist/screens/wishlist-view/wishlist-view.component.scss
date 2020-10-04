@@ -11,28 +11,18 @@
   margin: 24px 0;
 }
 
-.add-item-button {
-  position: fixed;
-  right: 32px;
-  top: 27px;
-  z-index: 10;
-
-  @media screen and (min-width: 960px) {
-    top: initial;
-    bottom: 32px;
-  }
-}
-
 .top-section {
   margin-bottom: 32px;
 
   .page-header {
-    margin: 16px 0 0;
+    margin: 8px 0 0;
     padding: 0;
   }
 }
 
 .card {
+  cursor: pointer;
+
   &__title {
     font-size: 1rem;
     font-weight: 500;

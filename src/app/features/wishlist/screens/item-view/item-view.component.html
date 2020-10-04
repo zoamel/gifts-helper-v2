@@ -1,0 +1,73 @@
+<div class="back-section">
+  <button mat-stroked-button color="primary" [routerLink]="['/wishlist']">
+    Back to wishlist
+  </button>
+</div>
+
+<ng-container *ngIf="!(requestInProgress$ | async); else loadingStateTemplate">
+  <article
+    *ngIf="item$ | async as item; else emptyStateTemplate"
+    class="item-container"
+    fxLayout="column"
+    fxLayoutGap="24px"
+  >
+    <h1>{{ item?.name }}</h1>
+
+    <div *ngIf="item?.url" fxLayoutAlign="start center" fxLayoutGap="8px">
+      <mat-icon class="section-icon">link</mat-icon>
+      <a [href]="item?.url" target="blank" rel="noopener noreferrer">
+        Link to shop
+      </a>
+    </div>
+
+    <div *ngIf="item?.note">
+      <div fxLayoutAlign="start center" fxLayoutGap="8px">
+        <mat-icon class="section-icon">note</mat-icon>
+        <h2 class="note__title">Note:</h2>
+      </div>
+      <p class="note__content">
+        {{ item?.note }}
+      </p>
+    </div>
+
+    <div class="item-actions" fxLayoutAlign="start center" fxLayoutGap="24px">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="showEditItemDialog(item)"
+      >
+        Edit
+      </button>
+
+      <button
+        *ngIf="!deleteConfirmationVisible"
+        mat-flat-button
+        color="warn"
+        (click)="toggleDeleteConfirmation()"
+      >
+        Delete
+      </button>
+
+      <div *ngIf="deleteConfirmationVisible" fxLayoutGap="8px">
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="toggleDeleteConfirmation()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="handleDeleteItem()">
+          <mat-icon>done</mat-icon>
+        </button>
+      </div>
+    </div>
+  </article>
+</ng-container>
+
+<ng-template #emptyStateTemplate>
+  <h1>No item found, sorry</h1>
+</ng-template>
+
+<ng-template #loadingStateTemplate>
+  <mat-progress-bar></mat-progress-bar>
+</ng-template>

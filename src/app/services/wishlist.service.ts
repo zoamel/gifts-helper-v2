@@ -6,7 +6,6 @@ import { switchMap, take } from 'rxjs/operators';
 import * as firebase from 'firebase/app';
 
 import { WishListItem } from '../models/wishlist.interface';
-import { UiService } from './ui.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,11 +17,7 @@ export class WishlistService {
   public readonly itemsToBuy = this.itemsToBuySubject.asObservable();
   public readonly requestInProgress = this.requestInProgressSubject.asObservable();
 
-  constructor(
-    private afAuth: AngularFireAuth,
-    private db: AngularFirestore,
-    private uiService: UiService
-  ) {}
+  constructor(private afAuth: AngularFireAuth, private db: AngularFirestore) {}
 
   getUserWishList(): Observable<WishListItem[]> {
     return this.afAuth.authState.pipe(
@@ -49,9 +44,7 @@ export class WishlistService {
       if (user) {
         this.db
           .collection<WishListItem>('wishItems', (ref) =>
-            ref
-              .where('public', '==', true)
-              .where('assignedUsers', 'array-contains', user.uid)
+            ref.where('assignedUsers', 'array-contains', user.uid)
           )
           .valueChanges({ idField: 'id' })
           .subscribe((items) => {
@@ -76,17 +69,6 @@ export class WishlistService {
         photoURL: user?.photoURL,
       },
     });
-  }
-
-  updateItem(item: WishListItem): Promise<void> {
-    const payload: Partial<WishListItem> = {
-      name: item.name,
-      url: item.url,
-      // @ts-ignore
-      updatedAt: new Date(),
-    };
-
-    return this.db.collection('wishItems').doc(item.id).update(payload);
   }
 
   async markItemAsBought(itemId: string): Promise<void> {
@@ -114,9 +96,5 @@ export class WishlistService {
       .update({
         assignedUsers: firebase.firestore.FieldValue.arrayRemove(user?.uid),
       });
-  }
-
-  deleteItem(itemId: string): Promise<void> {
-    return this.db.collection('wishItems').doc(itemId).delete();
   }
 }

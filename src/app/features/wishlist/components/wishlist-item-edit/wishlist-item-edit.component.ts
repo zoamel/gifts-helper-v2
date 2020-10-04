@@ -14,7 +14,7 @@ export class WishlistItemEditComponent {
   editItemForm = this.fb.group({
     name: [this.data.name, Validators.required],
     url: [this.data.url, Validators.pattern(urlRegexPattern)],
-    public: true,
+    note: [this.data.note],
   });
 
   get name(): AbstractControl | null {
@@ -23,6 +23,10 @@ export class WishlistItemEditComponent {
 
   get url(): AbstractControl | null {
     return this.editItemForm.get('url');
+  }
+
+  get note(): AbstractControl | null {
+    return this.editItemForm.get('note');
   }
 
   constructor(

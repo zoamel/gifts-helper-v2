@@ -24,18 +24,30 @@
         type="url"
         formControlName="url"
       />
+      <mat-hint>Optional</mat-hint>
       <mat-error *ngIf="url?.invalid && url?.errors?.pattern">
         This is not a valid link
       </mat-error>
     </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Note</mat-label>
+      <textarea
+        matInput
+        placeholder="Note"
+        formControlName="note"
+        rows="8"
+      ></textarea>
+      <mat-hint>Optional</mat-hint>
+    </mat-form-field>
   </form>
 </div>
 
-<div mat-dialog-actions>
-  <button mat-stroked-button color="warn" (click)="handleCancel()">
-    Cancel
-  </button>
+<div mat-dialog-actions fxLayoutGap="16px">
   <button mat-raised-button color="primary" (click)="handleAddItem()">
     Save
+  </button>
+  <button mat-stroked-button color="warn" (click)="handleCancel()">
+    Cancel
   </button>
 </div>
