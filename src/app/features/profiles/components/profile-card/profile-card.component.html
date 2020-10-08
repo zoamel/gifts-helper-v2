@@ -3,15 +3,8 @@
   fxLayout="row"
   fxLayoutAlign="start center"
   fxLayoutGap="16px"
+  [routerLink]="['/profiles', profile?.uid]"
 >
   <img mat-card-avatar [src]="profile?.photoURL" [alt]="profile?.displayName" />
   <h1 class="profile-card__title">{{ profile?.displayName }}</h1>
-  <div fxFlex></div>
-  <button
-    mat-stroked-button
-    color="primary"
-    [routerLink]="['/profiles', profile?.uid]"
-  >
-    Go To Profile
-  </button>
 </mat-card>

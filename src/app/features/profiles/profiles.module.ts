@@ -7,6 +7,7 @@ import { ProfileSearchComponent } from './components/profile-search/profile-sear
 import { ProfilesRoutingModule } from './profiles-routing.module';
 import { ProfileWishlistComponent } from './screens/profile-wishlist/profile-wishlist.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
+import { ProfileItemViewComponent } from './screens/profile-item-view/profile-item-view.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
     ProfileSearchComponent,
     ProfileWishlistComponent,
     ProfileCardComponent,
+    ProfileItemViewComponent,
   ],
   imports: [SharedModule, ReactiveFormsModule, ProfilesRoutingModule],
 })

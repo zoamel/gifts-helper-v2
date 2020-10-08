@@ -1,11 +1,53 @@
-<app-wishlist
-  mode="visitor"
-  [data]="wishListItems$ | async"
-  [currentUser]="authUser"
-  [selectedProfile]="profileData$ | async"
-  [isObserved]="isObserved"
-  (saveItem)="assignItem($event)"
-  (removeItem)="unassignItem($event)"
-  (addProfileToObserved)="observeProfile($event)"
-  (removeProfileFromObserved)="unObserveProfile($event)"
-></app-wishlist>
+<div class="cards-container" fxLayout="column" fxLayoutGap="32px">
+  <div *ngIf="profileData$ | async as selectedProfile">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+      <h1 class="selected-profile__name">
+        {{ selectedProfile.displayName }}
+      </h1>
+
+      <button
+        mat-icon-button
+        [color]="isObserved ? 'warn' : 'primary'"
+        [matTooltip]="isObserved ? 'Stop observing user' : 'Observe user'"
+        matTooltipPosition="below"
+        (click)="
+          isObserved
+            ? unObserveProfile(selectedProfile)
+            : observeProfile(selectedProfile)
+        "
+        aria-label="Add person to watch list"
+      >
+        <mat-icon *ngIf="isObserved">visibility_off</mat-icon>
+        <mat-icon *ngIf="!isObserved">visibility</mat-icon>
+      </button>
+    </div>
+    <hr />
+  </div>
+
+  <div *ngIf="(wishListItems$ | async)?.length == 0">
+    <h1>No item added yet</h1>
+  </div>
+
+  <mat-card
+    fxLayout="column"
+    class="card"
+    *ngFor="let listItem of wishListItems$ | async"
+    [routerLink]="['item', listItem.id]"
+  >
+    <div fxFill fxLayout="column">
+      <div fxLayoutAlign="space-between start">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+          <mat-icon *ngIf="isItemAssigned(listItem)" color="primary">
+            check_circle
+          </mat-icon>
+
+          <mat-icon *ngIf="!isItemAssigned(listItem)" color="primary">
+            help_outline
+          </mat-icon>
+
+          <h1 class="card__title">{{ listItem.name }}</h1>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

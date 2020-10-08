@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { take } from 'rxjs/operators';
 
 import { ProfilesService } from '../../../../services/profiles.service';
 import { AuthService } from '../../../../services/auth.service';
@@ -62,15 +61,11 @@ export class ProfileWishlistComponent implements OnInit, OnDestroy {
     this.authUserSubscription?.unsubscribe();
   }
 
-  assignItem(item: WishListItem): void {
-    if (this.authUser) {
-      this.profilesService.assignUser(item.id, this.authUser.uid);
-    }
-  }
-
-  unassignItem(item: WishListItem): void {
-    if (this.authUser) {
-      this.profilesService.unassignUser(item.id, this.authUser.uid);
+  isItemAssigned(listItem: WishListItem): boolean {
+    if (listItem.assignedUsers && this.authUser) {
+      return listItem.assignedUsers.includes(this.authUser.uid);
+    } else {
+      return false;
     }
   }
 

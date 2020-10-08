@@ -16,12 +16,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-// Components
-import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
-  declarations: [WishlistComponent],
+  declarations: [],
   imports: [
     CommonModule,
     FlexLayoutModule,
@@ -38,6 +36,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     MatExpansionModule,
     MatDividerModule,
     MatSnackBarModule,
+    MatTooltipModule,
   ],
   exports: [
     CommonModule,
@@ -55,7 +54,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     MatExpansionModule,
     MatDividerModule,
     MatSnackBarModule,
-    WishlistComponent,
+    MatTooltipModule,
   ],
 })
 export class SharedModule {}
