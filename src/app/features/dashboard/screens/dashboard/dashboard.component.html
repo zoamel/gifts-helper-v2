@@ -2,7 +2,7 @@
   <div *ngIf="!(requestInProgress$ | async); else loadingState">
     <div *ngIf="itemsToBuy$ | async as itemsToBuy">
       <div *ngIf="listHaveItems(itemsToBuy); else emptyState">
-        <h1>List of people you want to buy present for</h1>
+        <h1>Shopping List</h1>
         <hr />
 
         <div
