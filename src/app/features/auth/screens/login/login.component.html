@@ -1,0 +1,65 @@
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
+  <h1 class="title">{{ 'AUTH.TITLE' | translate }}</h1>
+
+  <div class="form-container">
+    <img
+      class="main-image"
+      src="/assets/images/undraw_authentication_fsn5.svg"
+      alt="Login image"
+    />
+
+    <button
+      (click)="signInWithGoogle()"
+      [disabled]="signingIn"
+      class="login-button"
+      mat-raised-button
+      color="warn"
+    >
+      {{ 'AUTH.LOGIN_WITH_GOOGLE' | translate }}
+    </button>
+
+    <mat-progress-bar
+      *ngIf="signingIn"
+      class="progress-bar"
+      mode="indeterminate"
+    ></mat-progress-bar>
+    <hr *ngIf="!signingIn" class="hr-text" data-content="OR" />
+
+    <mat-card>
+      <form
+        class="login-form"
+        [formGroup]="loginForm"
+        fxLayout="column"
+        fxLayoutGap="8px"
+        (ngSubmit)="loginWithEmail()"
+      >
+        <mat-form-field appearance="outline" class="login-form__field">
+          <mat-label>{{ 'AUTH.EMAIL' | translate }}</mat-label>
+          <input matInput formControlName="email" type="email" required />
+          <mat-error *ngIf="email?.invalid && email?.errors?.required">
+            {{ 'COMMON.FORMS.FIELD_REQUIRED' | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="login-form__field">
+          <mat-label>{{ 'AUTH.PASSWORD' | translate }}</mat-label>
+          <input matInput formControlName="password" type="password" required />
+          <mat-error *ngIf="password?.invalid && password?.errors?.required">
+            {{ 'COMMON.FORMS.FIELD_REQUIRED' | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <p *ngIf="error">{{ error }}</p>
+
+        <button
+          [disabled]="signingIn"
+          mat-raised-button
+          type="submit"
+          color="primary"
+        >
+          {{ 'AUTH.LOGIN' | translate }}
+        </button>
+      </form>
+    </mat-card>
+  </div>
+</div>

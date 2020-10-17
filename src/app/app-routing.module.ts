@@ -34,10 +34,10 @@ const routes: Routes = [
     canLoad: [AuthGuard],
   },
   {
-    path: 'login',
+    path: 'auth',
     component: UnauthorizedLayoutComponent,
     loadChildren: () =>
-      import('./features/login/login.module').then((m) => m.LoginModule),
+      import('./features/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: '',

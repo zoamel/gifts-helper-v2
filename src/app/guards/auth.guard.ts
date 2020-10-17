@@ -16,7 +16,7 @@ export class AuthGuard implements CanLoad {
       tap((loggedIn) => {
         if (!loggedIn) {
           console.log('Access Denied');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/auth/login']);
         }
       })
     );

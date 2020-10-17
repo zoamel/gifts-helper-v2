@@ -1,0 +1,67 @@
+$max-width: 320px;
+
+.container {
+  padding-top: 64px;
+}
+
+.title {
+  font-size: 2.1rem;
+}
+
+.main-image {
+  width: $max-width;
+  padding-bottom: 32px;
+}
+
+.form-container {
+  width: $max-width;
+}
+
+.login-form {
+  margin-bottom: 12px;
+
+  &__field {
+    width: 100%;
+  }
+}
+
+.login-button {
+  width: 320px;
+}
+
+.progress-bar {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.hr-text {
+  height: 1.5em;
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+
+  &:before {
+    content: '';
+    background: #000;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+
+  &:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    padding: 0 0.5em;
+    line-height: 1.5em;
+    color: #000;
+    background-color: #edeeed;
+  }
+}

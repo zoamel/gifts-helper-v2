@@ -57,5 +57,12 @@
     "ITEMS_NOT_FOUND": "No items to show",
     "START_OBSERVING": "Start observing this user",
     "STOP_OBSERVING": "Stop observing this user"
+  },
+  "AUTH": {
+    "TITLE": "Please Sign In",
+    "LOGIN_WITH_GOOGLE": "Login with Google",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "LOGIN": "Login"
   }
 }

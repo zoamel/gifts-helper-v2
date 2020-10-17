@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { SharedModule } from '../../shared/shared.module';
-import { LoginRoutingModule } from './login-routing.module';
-import { LoginComponent } from './components/login/login.component';
+import { AuthRoutingModule } from './auth-routing.module';
+import { LoginComponent } from './screens/login/login.component';
 
 @NgModule({
   declarations: [LoginComponent],
   imports: [
     SharedModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatProgressBarModule,
-    LoginRoutingModule,
+    AuthRoutingModule,
   ],
 })
-export class LoginModule {}
+export class AuthModule {}

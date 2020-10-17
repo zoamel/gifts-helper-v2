@@ -64,5 +64,12 @@
     "ITEMS_NOT_FOUND": "Brak przedmiotów do pokazania",
     "START_OBSERVING": "Zacznij obserwować osobę",
     "STOP_OBSERVING": "Przestań obserwować osobę"
+  },
+  "AUTH": {
+    "TITLE": "Proszę sie zalogować",
+    "LOGIN_WITH_GOOGLE": "Zaloguj się przez Google",
+    "EMAIL": "Email",
+    "PASSWORD": "Hasło",
+    "LOGIN": "Zaloguj się"
   }
 }

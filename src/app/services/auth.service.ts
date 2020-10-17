@@ -33,6 +33,13 @@ export class AuthService {
     return await this.afAuth.signInWithPopup(provider);
   }
 
+  async emailSignin(
+    email: string,
+    password: string
+  ): Promise<auth.UserCredential> {
+    return await this.afAuth.signInWithEmailAndPassword(email, password);
+  }
+
   async signOut(): Promise<boolean> {
     await this.afAuth.signOut();
     return this.router.navigate(['/']);
