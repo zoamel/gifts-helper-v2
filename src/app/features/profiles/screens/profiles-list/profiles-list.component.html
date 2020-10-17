@@ -2,7 +2,7 @@
   *ngIf="observedProfiles$ | async as observedProfiles"
   class="observed-profiles__container"
 >
-  <p class="mat-title" *ngIf="observedProfiles?.length > 0">
+  <p class="mat-title" *ngIf="observedProfiles && observedProfiles.length > 0">
     {{ 'PROFILES.OBSERVED_USERS' | translate }}
   </p>
   <ul>
@@ -23,7 +23,7 @@
     </li>
   </ul>
 
-  <hr *ngIf="observedProfiles?.length > 0" />
+  <hr *ngIf="observedProfiles && observedProfiles.length > 0" />
 </div>
 
 <app-profile-search

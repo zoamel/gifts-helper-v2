@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { LayoutComponent } from './core/layout/layout.component';
+import { UnauthorizedLayoutComponent } from './core/unauthorized-layout/unauthorized-layout.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'shopping-list',
+    component: LayoutComponent,
     loadChildren: () =>
       import('./features/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
@@ -14,6 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'wishlist',
+    component: LayoutComponent,
     loadChildren: () =>
       import('./features/wishlist/wishlist.module').then(
         (m) => m.WishlistModule
@@ -22,6 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'profiles',
+    component: LayoutComponent,
     loadChildren: () =>
       import('./features/profiles/profiles.module').then(
         (m) => m.ProfilesModule
@@ -30,13 +35,9 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    component: UnauthorizedLayoutComponent,
     loadChildren: () =>
       import('./features/login/login.module').then((m) => m.LoginModule),
-  },
-  {
-    path: 'faq',
-    loadChildren: () =>
-      import('./features/faq/faq.module').then((m) => m.FaqModule),
   },
   {
     path: '',

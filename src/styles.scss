@@ -9,3 +9,10 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
   background-color: #eeeeee;
 }
+
+li,
+.mat-card {
+  &:focus {
+    outline: none;
+  }
+}

@@ -20,9 +20,10 @@ import { MatMenuModule } from '@angular/material/menu';
 
 import { LayoutComponent } from './layout/layout.component';
 import { FeedbackModalComponent } from './feedback-modal/feedback-modal.component';
+import { UnauthorizedLayoutComponent } from './unauthorized-layout/unauthorized-layout.component';
 
 @NgModule({
-  declarations: [LayoutComponent, FeedbackModalComponent],
+  declarations: [LayoutComponent, FeedbackModalComponent, UnauthorizedLayoutComponent],
   imports: [
     CommonModule,
     RouterModule,
