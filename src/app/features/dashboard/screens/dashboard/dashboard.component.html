@@ -2,7 +2,7 @@
   <div *ngIf="!(requestInProgress$ | async); else loadingState">
     <div *ngIf="itemsToBuy$ | async as itemsToBuy">
       <div *ngIf="listHaveItems(itemsToBuy); else emptyState">
-        <h1>Shopping List</h1>
+        <h1>{{ 'SHOPPING_LIST.MAIN_TITLE' | translate }}</h1>
         <hr />
 
         <div
@@ -31,7 +31,7 @@
 
             <mat-chip-list *ngIf="item.boughtBy !== user?.uid && item.bought">
               <mat-chip color="warn" selected>
-                Someone already bought it!
+                {{ 'SHOPPING_LIST.SOMEONE_BOUGHT_ITEM' | translate }}
               </mat-chip>
             </mat-chip-list>
 
@@ -48,8 +48,12 @@
                 (click)="handleMarkItemAsBought(item)"
                 [disabled]="item.bought && item.boughtBy !== user?.uid"
               >
-                <span *ngIf="!item.bought">Mark as bought</span>
-                <span *ngIf="item.bought">Mark as not bought</span>
+                <span *ngIf="!item.bought">
+                  {{ 'SHOPPING_LIST.MARK_AS_BOUGHT' | translate }}
+                </span>
+                <span *ngIf="item.bought">
+                  {{ 'SHOPPING_LIST.MARK_AS_NOT_BOUGHT' | translate }}
+                </span>
               </button>
               <button
                 mat-stroked-button
@@ -57,7 +61,7 @@
                 (click)="unassignFromItem(item)"
                 [disabled]="item.bought && item.boughtBy === user?.uid"
               >
-                <span>Remove</span>
+                <span>{{ 'SHOPPING_LIST.REMOVE' | translate }}</span>
               </button>
             </div>
           </mat-card>
@@ -75,7 +79,7 @@
 
 <ng-template #emptyState>
   <div class="empty-state__container" fxLayout="column">
-    <h1>It seems that you don't want to buy a gift for anyone, yet...</h1>
+    <h1>{{ 'SHOPPING_LIST.EMPTY_STATE_TITLE' | translate }}</h1>
 
     <div
       fxLayout.lt-md="column"
@@ -85,15 +89,15 @@
       class="empty-state__selection-container"
     >
       <button mat-raised-button color="primary" [routerLink]="['/wishlist']">
-        Go to your wish list
+        {{ 'SHOPPING_LIST.GO_TO_WISHLIST' | translate }}
       </button>
       <img
         src="/assets/images/undraw_no_data_qbuo.svg"
         alt="santa claus"
         class="empty-state__image"
       />
-      <button mat-raised-button color="accent" [routerLink]="['/profiles']">
-        Search for others wishlist
+      <button mat-raised-button color="accent" [routerLink]="['/search']">
+        {{ 'SHOPPING_LIST.SEARCH_FOR_WISHLIST' | translate }}
       </button>
     </div>
   </div>

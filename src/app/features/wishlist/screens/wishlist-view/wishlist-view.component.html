@@ -6,7 +6,7 @@
         fxLayoutAlign="space-between center"
         class="top-section"
       >
-        <h1 class="page-header">Your wish list</h1>
+        <h1 class="page-header">{{ 'WISHLIST.MAIN_TITLE' | translate }}</h1>
 
         <button (click)="showAddItemDialog()" mat-mini-fab color="accent">
           <mat-icon>add</mat-icon>
@@ -41,10 +41,12 @@
       alt="No Data"
     />
 
-    <h1 class="mat-title empty-state__heading">Your wishlist is empty</h1>
+    <h1 class="mat-title empty-state__heading">
+      {{ 'WISHLIST.EMPTY_STATE_TITLE' | translate }}
+    </h1>
 
     <button (click)="showAddItemDialog()" mat-raised-button color="primary">
-      Add first item
+      {{ 'WISHLIST.ADD_FIRST_ITEM' | translate }}
     </button>
   </div>
 </ng-template>

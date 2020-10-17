@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TranslateModule } from '@ngx-translate/core';
 
 // Material Imports
 import { MatButtonModule } from '@angular/material/button';
@@ -23,6 +24,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   imports: [
     CommonModule,
     FlexLayoutModule,
+    TranslateModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,
@@ -41,6 +43,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   exports: [
     CommonModule,
     FlexLayoutModule,
+    TranslateModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,

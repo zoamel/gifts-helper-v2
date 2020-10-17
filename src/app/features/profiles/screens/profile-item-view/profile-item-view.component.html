@@ -4,7 +4,7 @@
     color="primary"
     [routerLink]="['/profiles', profileId]"
   >
-    Back to profile wishlist
+    {{ 'PROFILES.BACK_TO_PROFILE_WISHLIST' | translate }}
   </button>
 </div>
 
@@ -30,14 +30,14 @@
     <div *ngIf="item?.url" fxLayoutAlign="start center" fxLayoutGap="8px">
       <mat-icon class="section-icon">link</mat-icon>
       <a [href]="item?.url" target="blank" rel="noopener noreferrer">
-        Link to shop
+        {{ 'PROFILES.LINK_TO_SHOP' | translate }}
       </a>
     </div>
 
     <div *ngIf="item?.note">
       <div fxLayoutAlign="start center" fxLayoutGap="8px">
         <mat-icon class="section-icon">note</mat-icon>
-        <h2 class="note__title">Note:</h2>
+        <h2 class="note__title">{{ 'PROFILES.ITEM_NOTE' | translate }}</h2>
       </div>
       <p class="note__content">
         {{ item?.note }}
@@ -46,7 +46,7 @@
 
     <div class="item-actions" fxLayoutAlign="start center" fxLayoutGap="24px">
       <p *ngIf="isSomeoneBuying(item)" class="card__info-text">
-        Someone already want to buy this item
+        {{ 'PROFILES.SOMEONE_WANT_TO_BUY_THIS_ITEM' | translate }}
       </p>
 
       <button
@@ -54,14 +54,19 @@
         [color]="isItemAssigned(item) ? 'warn' : 'primary'"
         (click)="isItemAssigned(item) ? unassignItem() : assignItem()"
       >
-        {{ isItemAssigned(item) ? "Don't want to buy" : 'Want to buy' }}
+        {{
+          (isItemAssigned(item)
+            ? 'PROFILES.DONT_WANT_TO_BUY'
+            : 'PROFILES.WANT_TO_BUY'
+          ) | translate
+        }}
       </button>
     </div>
   </article>
 </ng-container>
 
 <ng-template #emptyStateTemplate>
-  <h1>No item found, sorry</h1>
+  <h1>{{ 'PROFILES.ITEM_NOT_FOUND' | translate }}</h1>
 </ng-template>
 
 <ng-template #loadingStateTemplate>

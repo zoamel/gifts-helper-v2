@@ -1,0 +1,68 @@
+{
+  "COMMON": {
+    "APP_NAME": "Pomocnik Prezentowy",
+    "SHOPPING_LIST": "Lista zakupów",
+    "WISH_LIST": "Lista życzeń",
+    "USERS_SEARCH": "Szukaj użytkowników",
+    "LOGOUT": "Wyloguj",
+    "SAVE": "Zapisz",
+    "SEND": "Wyślij",
+    "CANCEL": "Anuluj",
+    "SEND_FEEDBACK":"Wyślij opinię",
+    "FORMS": {
+      "OPTIONAL": "Opcjonalne",
+      "FIELD_REQUIRED": "To pole jest wymagane",
+      "NOT_VALID_LINK": "To nie jest prawidłowy URL"
+    }
+  },
+  "FEEDBACK": {
+    "TITLE": "Wyślij opinię",
+    "TYPE": "Typ",
+    "TYPE_FEEDBACK": "Opinia",
+    "TYPE_BUG": "Błąd",
+    "MESSAGE": "Wiadomość"
+  },
+  "SHOPPING_LIST": {
+    "MAIN_TITLE": "Lista zakupów",
+    "EMPTY_STATE_TITLE": "Wygląda na to, że aktualnie nie chcesz nikomu kupić prezentu",
+    "GO_TO_WISHLIST": "Idź do swojej listy życzeń",
+    "SEARCH_FOR_WISHLIST": "Przeszukaj listy życzeń innych osób",
+    "SOMEONE_BOUGHT_ITEM": "Ktoś już kupił ten przedmiot",
+    "MARK_AS_BOUGHT": "Oznacz jako kupiony",
+    "MARK_AS_NOT_BOUGHT": "Oznacz jako niekupiony",
+    "REMOVE": "Usuń"
+  },
+  "WISHLIST": {
+    "MAIN_TITLE": "Twoja lista życzeń",
+    "EMPTY_STATE_TITLE": "Twoja lista życzeń jest pusta",
+    "ADD_FIRST_ITEM": "Dodaj pierwszy przedmiot",
+    "ADD_ITEM_TITLE": "Dodaj przedmiot do swojej listy życzeń",
+    "ITEM_NAME": "Nazwa przedmiotu",
+    "ITEM_NAME_PLACEHOLDER": "Np. iPhone",
+    "ITEM_URL": "Link",
+    "ITEM_URL_PLACEHOLDER": "Link do sklepu",
+    "ITEM_NOTE": "Notatka",
+    "ITEM_EDIT": "Edycja",
+    "ITEM_DELETE": "Usuń",
+    "BACK_TO_WISHLIST": "Wróć do listy życzeń",
+    "LINK_TO_SHOP": "Link do sklepu",
+    "ITEM_NOT_FOUND": "Nie znaleziono przedmiotu"
+  },
+  "PROFILES": {
+    "OBSERVED_USERS": "Obserwowane osoby",
+    "NO_PROFILE_FOUND": "Nie znaleziono profilu",
+    "SEARCH_BY_EMAIL": "Szukaj po emailu",
+    "SEARCH_BY_EMAIL_PLACEHOLDER": "Możesz obejrzeć listy życzeń innych ludzi szukając ich po adresie email",
+    "SEARCH_BUTTON_LABEL": "Szukaj",
+    "BACK_TO_PROFILE_WISHLIST": "Powrót do listy życzeń osoby",
+    "LINK_TO_SHOP": "Link do sklepu",
+    "ITEM_NOTE": "Notatka",
+    "SOMEONE_WANT_TO_BUY_THIS_ITEM": "Ktoś chce już kupić ten przedmiot",
+    "WANT_TO_BUY": "Dodaj do listy zakupów",
+    "DONT_WANT_TO_BUY": "Usuń z listy zakupów",
+    "ITEM_NOT_FOUND": "Nie znaleziono przedmiotu",
+    "ITEMS_NOT_FOUND": "Brak przedmiotów do pokazania",
+    "START_OBSERVING": "Zacznij obserwować osobę",
+    "STOP_OBSERVING": "Przestań obserwować osobę"
+  }
+}

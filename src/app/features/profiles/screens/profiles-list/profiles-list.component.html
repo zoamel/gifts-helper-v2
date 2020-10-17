@@ -2,7 +2,9 @@
   *ngIf="observedProfiles$ | async as observedProfiles"
   class="observed-profiles__container"
 >
-  <p class="mat-title">Observed Users</p>
+  <p class="mat-title" *ngIf="observedProfiles?.length > 0">
+    {{ 'PROFILES.OBSERVED_USERS' | translate }}
+  </p>
   <ul>
     <li
       *ngFor="let userProfile of observedProfiles"
@@ -21,7 +23,7 @@
     </li>
   </ul>
 
-  <hr />
+  <hr *ngIf="observedProfiles?.length > 0" />
 </div>
 
 <app-profile-search
@@ -51,7 +53,7 @@
     fxLayoutAlign="center center"
     *ngIf="searchPhraseSubmitted"
   >
-    <h1>No Profile Found</h1>
+    <h1>{{ 'PROFILES.NO_PROFILE_FOUND' | translate }}</h1>
 
     <img
       src="/assets/images/undraw_not_found_60pq.svg"

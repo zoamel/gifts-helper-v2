@@ -1,0 +1,61 @@
+{
+  "COMMON": {
+    "APP_NAME": "Gifts Helper",
+    "SHOPPING_LIST": "Shopping List",
+    "WISH_LIST": "Wishlist",
+    "USERS_SEARCH": "Users Search",
+    "LOGOUT": "Logout",
+    "SEND_FEEDBACK":"Send feddback",
+    "SAVE": "Save",
+    "SEND": "Send",
+    "CANCEL": "Cancel",
+    "FORMS": {
+      "OPTIONAL": "Optional",
+      "FIELD_REQUIRED": "This field is required",
+      "NOT_VALID_LINK": "It's not a valid URL"
+    }
+  },
+  "SHOPPING_LIST": {
+    "MAIN_TITLE": "Tytuł",
+    "EMPTY_STATE_TITLE": "It seems that you don't want to buy a gift for anyone, yet",
+    "GO_TO_WISHLIST": "Go to your wishlist",
+    "SEARCH_FOR_WISHLIST": "Search for others wishlist",
+    "SOMEONE_BOUGHT_ITEM": "Someone already bought it!",
+    "MARK_AS_BOUGHT": "Mark as bought",
+    "MARK_AS_NOT_BOUGHT": "Mark as not bought",
+    "REMOVE": "Remove"
+  },
+  "WISHLIST": {
+    "MAIN_TITLE": "Your wish list",
+    "EMPTY_STATE_TITLE": "Your wishlist is empty",
+    "ADD_FIRST_ITEM": "Add first item",
+    "ADD_ITEM_TITLE": "Add New Wishlist Item",
+    "ITEM_NAME": "Item name",
+    "ITEM_NAME_PLACEHOLDER": "For example: iPhone",
+    "ITEM_URL": "Link",
+    "ITEM_URL_PLACEHOLDER": "Link to some online store",
+    "ITEM_NOTE": "Note",
+    "ITEM_EDIT": "Edit",
+    "ITEM_DELETE": "Delete",
+    "BACK_TO_WISHLIST": "Back to wishlist",
+    "LINK_TO_SHOP": "Link to shop",
+    "ITEM_NOT_FOUND": "No item found, sorry"
+  },
+  "PROFILES": {
+    "OBSERVED_USERS": "Observed users",
+    "NO_PROFILE_FOUND": "User not found",
+    "SEARCH_BY_EMAIL": "Search by email",
+    "SEARCH_BY_EMAIL_PLACEHOLDER": "You can see other users wish lists by searching for them by their email address",
+    "SEARCH_BUTTON_LABEL": "Search",
+    "BACK_TO_PROFILE_WISHLIST": "Back to person's wishlist",
+    "LINK_TO_SHOP": "Link to shop",
+    "ITEM_NOTE": "Note",
+    "SOMEONE_WANT_TO_BUY_THIS_ITEM": "Someone want to buy this item already",
+    "WANT_TO_BUY": "Add to shopping list",
+    "DONT_WANT_TO_BUY": "Remove from shopping list",
+    "ITEM_NOT_FOUND": "Item not found",
+    "ITEMS_NOT_FOUND": "No items to show",
+    "START_OBSERVING": "Start observing this user",
+    "STOP_OBSERVING": "Stop observing this user"
+  }
+}

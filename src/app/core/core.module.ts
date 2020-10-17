@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -37,6 +38,7 @@ import { FeedbackModalComponent } from './feedback-modal/feedback-modal.componen
     MatSelectModule,
     MatTooltipModule,
     MatSnackBarModule,
+    TranslateModule,
   ],
   exports: [LayoutComponent],
 })

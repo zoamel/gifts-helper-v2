@@ -4,17 +4,17 @@
     appearance="outline"
     (keyup.enter)="submit()"
   >
-    <mat-label>Search by email</mat-label>
+    <mat-label>{{ 'PROFILES.SEARCH_BY_EMAIL' | translate }}</mat-label>
     <input
       [formControl]="searchTerm"
       type="email"
-      placeholder="example@gmail.com"
+      placeholder="email@gmail.com"
       matInput
+      autocomplete="off"
       autofocus
     />
     <mat-hint>
-      You can see other people wish lists by searching for them by their email
-      address
+      {{ 'PROFILES.SEARCH_BY_EMAIL_PLACEHOLDER' | translate }}
     </mat-hint>
   </mat-form-field>
 
@@ -25,7 +25,7 @@
     [disabled]="requestInProgress"
     class="search-button"
   >
-    Search
+    {{ 'PROFILES.SEARCH_BUTTON_LABEL' | translate }}
   </button>
 
   <mat-progress-bar

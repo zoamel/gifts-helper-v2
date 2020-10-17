@@ -6,12 +6,17 @@ import { ProfileWishlistComponent } from './screens/profile-wishlist/profile-wis
 import { ProfileItemViewComponent } from './screens/profile-item-view/profile-item-view.component';
 
 const routes: Routes = [
-  { path: '', component: ProfilesListComponent },
+  { path: 'search', component: ProfilesListComponent },
   {
     path: ':id',
     component: ProfileWishlistComponent,
   },
   { path: ':id/item/:itemId', component: ProfileItemViewComponent },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'search',
+  },
 ];
 
 @NgModule({

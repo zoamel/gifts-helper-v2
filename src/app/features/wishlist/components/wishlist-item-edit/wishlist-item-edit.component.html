@@ -1,52 +1,51 @@
-<h1 mat-dialog-title>Edit {{ data.name }}</h1>
+<h1 mat-dialog-title>{{ data.name }}</h1>
 <div mat-dialog-content>
   <form class="new-item-form" [formGroup]="editItemForm" fxLayout="column">
     <mat-form-field appearance="outline">
-      <mat-label>Item Name</mat-label>
+      <mat-label>{{ 'WISHLIST.ITEM_NAME' | translate }}</mat-label>
       <input
         matInput
-        placeholder="For example: iPhone"
+        [placeholder]="'WISHLIST.ITEM_NAME_PLACEHOLDER' | translate"
         formControlName="name"
         type="text"
         required
         cdkFocusInitial
       />
       <mat-error *ngIf="name?.invalid && name?.errors?.required">
-        This field is required
+        {{ 'COMMON.FORMS.FIELD_REQUIRED' | translate }}
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Url</mat-label>
+      <mat-label>{{ 'WISHLIST.ITEM_URL' | translate }}</mat-label>
       <input
         matInput
-        placeholder="Link to some online store"
+        [placeholder]="'WISHLIST.ITEM_URL_PLACEHOLDER' | translate"
         type="url"
         formControlName="url"
       />
       <mat-error *ngIf="url?.invalid && url?.errors?.pattern">
-        This is not a valid link
+        {{ 'COMMON.FORMS.NOT_VALID_LINK' | translate }}
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Note</mat-label>
+      <mat-label>{{ 'WISHLIST.ITEM_NOTE' | translate }}</mat-label>
       <textarea
         matInput
-        placeholder="Note"
+        [placeholder]="'WISHLIST.ITEM_NOTE' | translate"
         formControlName="note"
         rows="8"
       ></textarea>
-      <mat-hint>Optional</mat-hint>
     </mat-form-field>
   </form>
 </div>
 
 <div mat-dialog-actions>
-  <button mat-stroked-button color="warn" (click)="handleCancel()">
-    Cancel
-  </button>
   <button mat-raised-button color="primary" (click)="handleSaveItem()">
-    Save
+    {{ 'COMMON.SAVE' | translate }}
+  </button>
+  <button mat-stroked-button color="warn" (click)="handleCancel()">
+    {{ 'COMMON.CANCEL' | translate }}
   </button>
 </div>

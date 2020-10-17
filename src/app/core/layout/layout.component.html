@@ -14,28 +14,21 @@
         [routerLink]="['/shopping-list']"
         routerLinkActive="router-link-active"
       >
-        Shopping List
+        {{ 'COMMON.SHOPPING_LIST' | translate }}
       </a>
       <a
         mat-list-item
         [routerLink]="['/wishlist']"
         routerLinkActive="router-link-active"
       >
-        Wish List
+        {{ 'COMMON.WISH_LIST' | translate }}
       </a>
       <a
         mat-list-item
         [routerLink]="['/profiles']"
         routerLinkActive="router-link-active"
       >
-        Profiles
-      </a>
-      <a
-        mat-list-item
-        [routerLink]="['/faq']"
-        routerLinkActive="router-link-active"
-      >
-        FAQ
+        {{ 'COMMON.USERS_SEARCH' | translate }}
       </a>
     </mat-nav-list>
   </mat-sidenav>
@@ -50,14 +43,14 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Gifts Helper</span>
+      <span>{{ 'COMMON.APP_NAME' | translate }}</span>
       <div class="spacer"></div>
       <button
         *ngIf="authService.user$ | async"
         mat-icon-button
         class="feedback-button"
         aria-label="Send feedback"
-        matTooltip="Send feedback"
+        [matTooltip]="'COMMON.SEND_FEEDBACK' | translate"
         (click)="openFeedbackDialog()"
       >
         <mat-icon>feedback</mat-icon>
@@ -67,7 +60,7 @@
         mat-flat-button
         (click)="logout()"
       >
-        Logout
+        {{ 'COMMON.LOGOUT' | translate }}
       </button>
     </mat-toolbar>
     <main>

@@ -1,38 +1,37 @@
-<h1 mat-dialog-title>Send Feedback</h1>
+<h1 mat-dialog-title>{{ 'FEEDBACK.TITLE' | translate }}</h1>
 
 <div mat-dialog-content>
   <form [formGroup]="feedbackForm">
     <mat-form-field appearance="outline">
-      <mat-label>Type</mat-label>
+      <mat-label>{{ 'FEEDBACK.TYPE' | translate }}</mat-label>
       <mat-select formControlName="type" required>
-        <mat-option value="feedback">Feedback</mat-option>
-        <mat-option value="bug">Bug</mat-option>
+        <mat-option value="feedback">
+          {{ 'FEEDBACK.TYPE_FEEDBACK' | translate }}
+        </mat-option>
+        <mat-option value="bug">
+          {{ 'FEEDBACK.TYPE_BUG' | translate }}
+        </mat-option>
       </mat-select>
       <mat-error *ngIf="type?.invalid && type?.errors?.required">
-        This field is required
+        {{ 'COMMON.FORMS.FIELD_REQUIRED' | translate }}
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Message</mat-label>
-      <textarea
-        matInput
-        placeholder="Link to some online store"
-        formControlName="message"
-        rows="8"
-      ></textarea>
+      <mat-label>{{ 'FEEDBACK.MESSAGE' | translate }}</mat-label>
+      <textarea matInput formControlName="message" rows="8"></textarea>
       <mat-error *ngIf="message?.invalid && message?.errors?.required">
-        This field is required
+        {{ 'COMMON.FORMS.FIELD_REQUIRED' | translate }}
       </mat-error>
     </mat-form-field>
   </form>
 </div>
 
 <div mat-dialog-actions>
-  <button mat-stroked-button color="warn" (click)="handleCancel()">
-    Cancel
-  </button>
   <button mat-raised-button color="primary" (click)="handleSubmit()">
-    Send
+    {{ 'COMMON.SEND' | translate }}
+  </button>
+  <button mat-stroked-button color="warn" (click)="handleCancel()">
+    {{ 'COMMON.CANCEL' | translate }}
   </button>
 </div>

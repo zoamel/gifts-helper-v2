@@ -1,6 +1,6 @@
 <div class="back-section">
   <button mat-stroked-button color="primary" [routerLink]="['/wishlist']">
-    Back to wishlist
+    {{ 'WISHLIST.BACK_TO_WISHLIST' | translate }}
   </button>
 </div>
 
@@ -16,14 +16,14 @@
     <div *ngIf="item?.url" fxLayoutAlign="start center" fxLayoutGap="8px">
       <mat-icon class="section-icon">link</mat-icon>
       <a [href]="item?.url" target="blank" rel="noopener noreferrer">
-        Link to shop
+        {{ 'WISHLIST.LINK_TO_SHOP' | translate }}
       </a>
     </div>
 
     <div *ngIf="item?.note">
       <div fxLayoutAlign="start center" fxLayoutGap="8px">
         <mat-icon class="section-icon">note</mat-icon>
-        <h2 class="note__title">Note:</h2>
+        <h2 class="note__title">{{ 'WISHLIST.ITEM_NOTE' | translate }}</h2>
       </div>
       <p class="note__content">
         {{ item?.note }}
@@ -36,7 +36,7 @@
         color="primary"
         (click)="showEditItemDialog(item)"
       >
-        Edit
+        {{ 'WISHLIST.ITEM_EDIT' | translate }}
       </button>
 
       <button
@@ -45,7 +45,7 @@
         color="warn"
         (click)="toggleDeleteConfirmation()"
       >
-        Delete
+        {{ 'WISHLIST.ITEM_DELETE' | translate }}
       </button>
 
       <div *ngIf="deleteConfirmationVisible" fxLayoutGap="8px">
