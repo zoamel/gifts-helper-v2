@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { LayoutComponent } from './layout/layout.component';
 import { FeedbackModalComponent } from './feedback-modal/feedback-modal.component';
@@ -38,6 +39,7 @@ import { FeedbackModalComponent } from './feedback-modal/feedback-modal.componen
     MatSelectModule,
     MatTooltipModule,
     MatSnackBarModule,
+    MatMenuModule,
     TranslateModule,
   ],
   exports: [LayoutComponent],

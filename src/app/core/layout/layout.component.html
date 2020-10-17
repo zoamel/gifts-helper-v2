@@ -56,11 +56,11 @@
         <mat-icon>feedback</mat-icon>
       </button>
       <button
-        *ngIf="authService.user$ | async"
+        *ngIf="authService.user$ | async as user"
         mat-flat-button
-        (click)="logout()"
+        [matMenuTriggerFor]="userMenu"
       >
-        {{ 'COMMON.LOGOUT' | translate }}
+        {{ user?.displayName }}
       </button>
     </mat-toolbar>
     <main>
@@ -68,3 +68,10 @@
     </main>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<mat-menu #userMenu="matMenu" xPosition="after">
+  <button (click)="logout()" mat-menu-item>
+    <mat-icon>logout</mat-icon>
+    {{ 'COMMON.LOGOUT' | translate }}
+  </button>
+</mat-menu>
