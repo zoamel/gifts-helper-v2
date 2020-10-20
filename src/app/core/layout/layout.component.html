@@ -61,7 +61,7 @@
       <span>{{ 'COMMON.APP_NAME' | translate }}</span>
       <div class="spacer"></div>
       <button
-        *ngIf="!(isHandset$ | async) && authService.user$ | async"
+        *ngIf="!(isHandset$ | async) && (authService.user$ | async)"
         mat-icon-button
         class="feedback-button"
         aria-label="Send feedback"
@@ -71,7 +71,7 @@
         <mat-icon>feedback</mat-icon>
       </button>
       <button
-        *ngIf="!(isHandset$ | async) && authService.user$ | async as user"
+        *ngIf="!(isHandset$ | async) && (authService.user$ | async) as user"
         mat-flat-button
         [matMenuTriggerFor]="userMenu"
       >

@@ -43,7 +43,8 @@
               "@firebase/auth",
               "@firebase/component",
               "@firebase/util",
-              "@firebase/remote-config"
+              "@firebase/remote-config",
+              "lodash"
             ]
           },
           "configurations": {
