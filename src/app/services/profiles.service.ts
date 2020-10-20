@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject, of } from 'rxjs';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { omit } from 'lodash';
 
 import { User } from '../models/user.interface';
 import { WishListItem } from '../models/wishlist.interface';
@@ -103,8 +104,9 @@ export class ProfilesService {
   observeProfile(profile: User): void {
     this.afAuth.authState.pipe(take(1)).subscribe((user) => {
       if (user) {
+        const payload = omit(profile, ['observedProfiles']);
         this.db.doc(`users/${user.uid}`).update({
-          observedProfiles: firebase.firestore.FieldValue.arrayUnion(profile),
+          observedProfiles: firebase.firestore.FieldValue.arrayUnion(payload),
         });
       }
     });
@@ -113,8 +115,9 @@ export class ProfilesService {
   unObserveProfile(profile: User): void {
     this.afAuth.authState.pipe(take(1)).subscribe((user) => {
       if (user) {
+        const payload = omit(profile, ['observedProfiles']);
         this.db.doc(`users/${user.uid}`).update({
-          observedProfiles: firebase.firestore.FieldValue.arrayRemove(profile),
+          observedProfiles: firebase.firestore.FieldValue.arrayRemove(payload),
         });
       }
     });

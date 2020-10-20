@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,7 +24,11 @@ import { FeedbackModalComponent } from './feedback-modal/feedback-modal.componen
 import { UnauthorizedLayoutComponent } from './unauthorized-layout/unauthorized-layout.component';
 
 @NgModule({
-  declarations: [LayoutComponent, FeedbackModalComponent, UnauthorizedLayoutComponent],
+  declarations: [
+    LayoutComponent,
+    FeedbackModalComponent,
+    UnauthorizedLayoutComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -41,6 +46,7 @@ import { UnauthorizedLayoutComponent } from './unauthorized-layout/unauthorized-
     MatTooltipModule,
     MatSnackBarModule,
     MatMenuModule,
+    FlexLayoutModule,
     TranslateModule,
   ],
   exports: [LayoutComponent],
