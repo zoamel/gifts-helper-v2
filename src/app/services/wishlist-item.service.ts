@@ -33,7 +33,10 @@ export class WishlistItemService {
       .subscribe(
         (item) => {
           if (item) {
-            this.itemSubject.next(item);
+            this.itemSubject.next({
+              ...item,
+              id: itemId,
+            });
             this.requestInProgressSubject.next(false);
           }
         },

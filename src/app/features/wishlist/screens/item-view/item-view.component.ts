@@ -16,7 +16,6 @@ export class ItemViewComponent implements OnInit {
   requestInProgress$: Observable<boolean>;
   item$: Observable<WishListItem | null>;
   itemId: string | null;
-  deleteConfirmationVisible = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,18 +31,6 @@ export class ItemViewComponent implements OnInit {
   ngOnInit(): void {
     if (this.itemId) {
       this.wishlistItemService.getUserWishlistItem(this.itemId);
-    }
-  }
-
-  toggleDeleteConfirmation(): void {
-    this.deleteConfirmationVisible = !this.deleteConfirmationVisible;
-  }
-
-  handleDeleteItem(): void {
-    if (this.itemId) {
-      this.wishlistItemService.deleteItem(this.itemId).then(() => {
-        this.router.navigate(['/wishlist']);
-      });
     }
   }
 
@@ -69,5 +56,11 @@ export class ItemViewComponent implements OnInit {
         }
       });
     }
+  }
+
+  deleteItem(item: WishListItem): void {
+    this.wishlistItemService.deleteItem(item.id).then(() => {
+      this.router.navigate(['/wishlist']);
+    });
   }
 }

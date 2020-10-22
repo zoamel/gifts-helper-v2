@@ -37,9 +37,11 @@
     "ITEM_NOTE": "Note",
     "ITEM_EDIT": "Edit",
     "ITEM_DELETE": "Delete",
+    "ITEM_ADDITIONAL_INFO": "Additional info",
     "BACK_TO_WISHLIST": "Back to wishlist",
     "LINK_TO_SHOP": "Link to shop",
     "ITEM_NOT_FOUND": "No item found, sorry"
+
   },
   "PROFILES": {
     "OBSERVED_USERS": "Observed users",
@@ -51,6 +53,7 @@
     "LINK_TO_SHOP": "Link to shop",
     "ITEM_NOTE": "Note",
     "SOMEONE_WANT_TO_BUY_THIS_ITEM": "Someone want to buy this item already",
+    "ITEM_ADDED_TO_SHOPPING_LIST": "Added to shopping list",
     "WANT_TO_BUY": "Add to shopping list",
     "DONT_WANT_TO_BUY": "Remove from shopping list",
     "ITEM_NOT_FOUND": "Item not found",

@@ -1,32 +1,32 @@
-<div class="cards-container" fxLayout="column" fxLayoutGap="32px">
-  <div *ngIf="profileData$ | async as selectedProfile">
-    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
-      <h1 class="selected-profile__name">
-        {{ selectedProfile.displayName }}
-      </h1>
+<div *ngIf="profileData$ | async as selectedProfile">
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+    <h1 class="selected-profile__name">
+      {{ selectedProfile.displayName }}
+    </h1>
 
-      <button
-        mat-icon-button
-        [color]="isObserved ? 'accent' : 'primary'"
-        [matTooltip]="
-          (isObserved ? 'PROFILES.STOP_OBSERVING' : 'PROFILES.START_OBSERVING')
-            | translate
-        "
-        matTooltipPosition="below"
-        (click)="
-          isObserved
-            ? unObserveProfile(selectedProfile)
-            : observeProfile(selectedProfile)
-        "
-        aria-label="Add person to watch list"
-      >
-        <mat-icon *ngIf="!isObserved">visibility_off</mat-icon>
-        <mat-icon *ngIf="isObserved">visibility</mat-icon>
-      </button>
-    </div>
-    <hr />
+    <button
+      mat-icon-button
+      [color]="isObserved ? 'accent' : 'primary'"
+      [matTooltip]="
+        (isObserved ? 'PROFILES.STOP_OBSERVING' : 'PROFILES.START_OBSERVING')
+          | translate
+      "
+      matTooltipPosition="below"
+      (click)="
+        isObserved
+          ? unObserveProfile(selectedProfile)
+          : observeProfile(selectedProfile)
+      "
+      aria-label="Add person to watch list"
+    >
+      <mat-icon *ngIf="!isObserved">visibility_off</mat-icon>
+      <mat-icon *ngIf="isObserved">visibility</mat-icon>
+    </button>
   </div>
+  <hr />
+</div>
 
+<div class="cards-container" fxLayout="column" fxLayoutGap="16px">
   <div *ngIf="(wishListItems$ | async)?.length == 0">
     <h1>{{ 'PROFILES.ITEMS_NOT_FOUND' | translate }}</h1>
   </div>
@@ -40,15 +40,16 @@
     <div fxFill fxLayout="column">
       <div fxLayoutAlign="space-between start">
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
-          <mat-icon *ngIf="isItemAssigned(listItem)" color="primary">
-            check_circle
-          </mat-icon>
-
-          <mat-icon *ngIf="!isItemAssigned(listItem)" color="primary">
-            help_outline
-          </mat-icon>
-
           <h1 class="card__title">{{ listItem.name }}</h1>
+
+          <mat-icon
+            *ngIf="isItemAssigned(listItem)"
+            [matTooltip]="'PROFILES.ITEM_ADDED_TO_SHOPPING_LIST' | translate"
+            color="primary"
+            matTooltipPosition="right"
+          >
+            shopping_bag
+          </mat-icon>
         </div>
       </div>
     </div>

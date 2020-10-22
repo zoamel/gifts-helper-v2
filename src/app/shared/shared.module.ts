@@ -18,9 +18,12 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatChipsModule } from '@angular/material/chips';
+
+import { ItemDetailsComponent } from './components/item-details/item-details.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [ItemDetailsComponent],
   imports: [
     CommonModule,
     FlexLayoutModule,
@@ -39,6 +42,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDividerModule,
     MatSnackBarModule,
     MatTooltipModule,
+    MatChipsModule,
   ],
   exports: [
     CommonModule,
@@ -58,6 +62,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDividerModule,
     MatSnackBarModule,
     MatTooltipModule,
+    MatChipsModule,
+    ItemDetailsComponent,
   ],
 })
 export class SharedModule {}

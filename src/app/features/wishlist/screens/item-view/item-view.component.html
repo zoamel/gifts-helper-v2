@@ -5,74 +5,14 @@
 </div>
 
 <ng-container *ngIf="!(requestInProgress$ | async); else loadingStateTemplate">
-  <mat-card
-    class="item-card mat-elevation-z4"
-    *ngIf="item$ | async as item; else emptyStateTemplate"
-  >
-    <div class="item-card__header">
-      <h1 class="item-card__title">{{ item?.name }}</h1>
-    </div>
-
-    <div class="item-card__content">
-      <dl>
-        <div class="item-card__section" fxLayout="row">
-          <dt fxFlex="200px">
-            {{ 'WISHLIST.LINK_TO_SHOP' | translate }}
-          </dt>
-          <dd fxFlex *ngIf="item?.url">
-            <a [href]="item?.url" target="blank" rel="noopener noreferrer">
-              {{ item?.url }}
-            </a>
-          </dd>
-        </div>
-
-        <div class="item-card__section" fxLayout="row">
-          <dt fxFlex="200px">
-            {{ 'WISHLIST.ITEM_NOTE' | translate }}
-          </dt>
-          <dd fxFlex *ngIf="item?.note">
-            {{ item?.note }}
-          </dd>
-        </div>
-      </dl>
-    </div>
-
-    <div
-      class="item-card__actions-container"
-      fxLayoutAlign="start center"
-      fxLayoutGap="16px"
-    >
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="showEditItemDialog(item)"
-      >
-        {{ 'WISHLIST.ITEM_EDIT' | translate }}
-      </button>
-
-      <button
-        *ngIf="!deleteConfirmationVisible"
-        mat-raised-button
-        color="warn"
-        (click)="toggleDeleteConfirmation()"
-      >
-        {{ 'WISHLIST.ITEM_DELETE' | translate }}
-      </button>
-
-      <div *ngIf="deleteConfirmationVisible" fxLayoutGap="8px">
-        <button
-          mat-icon-button
-          color="primary"
-          (click)="toggleDeleteConfirmation()"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-        <button mat-icon-button color="warn" (click)="handleDeleteItem()">
-          <mat-icon>done</mat-icon>
-        </button>
-      </div>
-    </div>
-  </mat-card>
+  <ng-container *ngIf="item$ | async as item; else emptyStateTemplate">
+    <app-item-details
+      mode="owner"
+      [item]="item"
+      (openEdit)="showEditItemDialog($event)"
+      (delete)="deleteItem($event)"
+    ></app-item-details>
+  </ng-container>
 </ng-container>
 
 <ng-template #emptyStateTemplate>

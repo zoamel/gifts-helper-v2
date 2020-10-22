@@ -44,6 +44,7 @@
     "ITEM_NOTE": "Notatka",
     "ITEM_EDIT": "Edycja",
     "ITEM_DELETE": "Usuń",
+    "ITEM_ADDITIONAL_INFO": "Dodatkowe informacje",
     "BACK_TO_WISHLIST": "Wróć do listy życzeń",
     "LINK_TO_SHOP": "Link do sklepu",
     "ITEM_NOT_FOUND": "Nie znaleziono przedmiotu"
@@ -57,7 +58,8 @@
     "BACK_TO_PROFILE_WISHLIST": "Powrót do listy życzeń osoby",
     "LINK_TO_SHOP": "Link do sklepu",
     "ITEM_NOTE": "Notatka",
-    "SOMEONE_WANT_TO_BUY_THIS_ITEM": "Ktoś chce już kupić ten przedmiot",
+    "SOMEONE_WANT_TO_BUY_THIS_ITEM": "Ktoś inny chce już kupić ten przedmiot",
+    "ITEM_ADDED_TO_SHOPPING_LIST": "Dodano do listy zakupów",
     "WANT_TO_BUY": "Dodaj do listy zakupów",
     "DONT_WANT_TO_BUY": "Usuń z listy zakupów",
     "ITEM_NOT_FOUND": "Nie znaleziono przedmiotu",

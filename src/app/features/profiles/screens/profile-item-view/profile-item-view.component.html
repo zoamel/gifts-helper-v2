@@ -1,6 +1,6 @@
 <div class="back-section">
   <button
-    mat-stroked-button
+    mat-flat-button
     color="primary"
     [routerLink]="['/profiles', profileId]"
   >
@@ -9,60 +9,16 @@
 </div>
 
 <ng-container *ngIf="!(requestInProgress$ | async); else loadingStateTemplate">
-  <article
-    *ngIf="item$ | async as item; else emptyStateTemplate"
-    class="item-container"
-    fxLayout="column"
-    fxLayoutGap="24px"
-  >
-    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
-      <mat-icon *ngIf="isItemAssigned(item)" color="primary">
-        check_circle
-      </mat-icon>
-
-      <mat-icon *ngIf="!isItemAssigned(item)" color="primary">
-        help_outline
-      </mat-icon>
-
-      <h1 class="item-name">{{ item?.name }}</h1>
-    </div>
-
-    <div *ngIf="item?.url" fxLayoutAlign="start center" fxLayoutGap="8px">
-      <mat-icon class="section-icon">link</mat-icon>
-      <a [href]="item?.url" target="blank" rel="noopener noreferrer">
-        {{ 'PROFILES.LINK_TO_SHOP' | translate }}
-      </a>
-    </div>
-
-    <div *ngIf="item?.note">
-      <div fxLayoutAlign="start center" fxLayoutGap="8px">
-        <mat-icon class="section-icon">note</mat-icon>
-        <h2 class="note__title">{{ 'PROFILES.ITEM_NOTE' | translate }}</h2>
-      </div>
-      <p class="note__content">
-        {{ item?.note }}
-      </p>
-    </div>
-
-    <div class="item-actions" fxLayoutAlign="start center" fxLayoutGap="24px">
-      <p *ngIf="isSomeoneBuying(item)" class="card__info-text">
-        {{ 'PROFILES.SOMEONE_WANT_TO_BUY_THIS_ITEM' | translate }}
-      </p>
-
-      <button
-        mat-stroked-button
-        [color]="isItemAssigned(item) ? 'warn' : 'primary'"
-        (click)="isItemAssigned(item) ? unassignItem() : assignItem()"
-      >
-        {{
-          (isItemAssigned(item)
-            ? 'PROFILES.DONT_WANT_TO_BUY'
-            : 'PROFILES.WANT_TO_BUY'
-          ) | translate
-        }}
-      </button>
-    </div>
-  </article>
+  <ng-container *ngIf="item$ | async as item; else emptyStateTemplate">
+    <app-item-details
+      mode="visitor"
+      [item]="item"
+      [itemAssigned]="isItemAssigned(item)"
+      [someoneIsBuying]="isSomeoneBuying(item)"
+      (assignItem)="assignItem()"
+      (unAssignItem)="unassignItem()"
+    ></app-item-details>
+  </ng-container>
 </ng-container>
 
 <ng-template #emptyStateTemplate>
