@@ -21,9 +21,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
+import { DomainNamePipe } from './pipes/domain-name.pipe';
 
 @NgModule({
-  declarations: [ItemDetailsComponent],
+  declarations: [ItemDetailsComponent, DomainNamePipe],
   imports: [
     CommonModule,
     FlexLayoutModule,

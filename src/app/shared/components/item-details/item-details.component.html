@@ -10,31 +10,55 @@
 
   <div class="item-card__content">
     <dl>
-      <div class="item-card__section" fxLayout="row">
-        <dt fxFlex="200px">
+      <div
+        class="item-card__section"
+        fxLayout="column"
+        fxLayout.gt-sm="row"
+        fxLayoutGap.sm="16px"
+      >
+        <dt fxFlex.gt-lg="200px">
           {{ 'WISHLIST.LINK_TO_SHOP' | translate }}
         </dt>
-        <dd fxFlex *ngIf="item?.url">
-          <a [href]="item?.url" target="blank" rel="noopener noreferrer">
-            {{ item?.url }}
+        <dd fxFlex.gt-lg *ngIf="item?.url">
+          <a
+            [href]="item?.url"
+            target="blank"
+            rel="noopener noreferrer"
+            class="item-card__link"
+            fxLayoutAlign="start center"
+          >
+            <span>{{ item?.url | domainName }}</span>
+
+            <mat-icon class="item-card__link__icon">open_in_new</mat-icon>
           </a>
         </dd>
       </div>
 
-      <div class="item-card__section" fxLayout="row">
-        <dt fxFlex="200px">
+      <div
+        class="item-card__section"
+        fxLayout="column"
+        fxLayout.gt-sm="row"
+        fxLayoutGap.sm="16px"
+      >
+        <dt fxFlex.gt-lg="200px">
           {{ 'WISHLIST.ITEM_NOTE' | translate }}
         </dt>
-        <dd fxFlex *ngIf="item?.note">
+        <dd fxFlex.gt-lg *ngIf="item?.note">
           {{ item?.note }}
         </dd>
       </div>
 
-      <div class="item-card__section" fxLayout="row" *ngIf="mode == 'visitor'">
-        <dt fxFlex="200px">
+      <div
+        class="item-card__section"
+        fxLayout="column"
+        fxLayout.gt-sm="row"
+        fxLayoutGap.sm="16px"
+        *ngIf="mode == 'visitor'"
+      >
+        <dt fxFlex.gt-lg="200px">
           {{ 'WISHLIST.ITEM_ADDITIONAL_INFO' | translate }}
         </dt>
-        <dd fxFlex fxLayoutGap="8px">
+        <dd fxFlex.gt-lg fxLayoutGap="8px">
           <span class="item-card__badge" *ngIf="someoneIsBuying">
             {{ 'PROFILES.SOMEONE_WANT_TO_BUY_THIS_ITEM' | translate }}
           </span>
