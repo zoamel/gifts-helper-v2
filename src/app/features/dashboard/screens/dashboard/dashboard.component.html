@@ -55,6 +55,7 @@
                   {{ 'SHOPPING_LIST.MARK_AS_NOT_BOUGHT' | translate }}
                 </span>
               </button>
+
               <button
                 mat-stroked-button
                 color="warn"
@@ -62,6 +63,19 @@
                 [disabled]="item.bought && item.boughtBy === user?.uid"
               >
                 <span>{{ 'SHOPPING_LIST.REMOVE' | translate }}</span>
+              </button>
+
+              <button
+                mat-icon-button
+                aria-label="Open item details"
+                [routerLink]="[
+                  '/profiles',
+                  userItems.value[0].id,
+                  'item',
+                  item.id
+                ]"
+              >
+                <mat-icon>open_in_new</mat-icon>
               </button>
             </div>
           </mat-card>

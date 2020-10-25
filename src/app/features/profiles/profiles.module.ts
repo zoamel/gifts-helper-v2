@@ -8,6 +8,7 @@ import { ProfilesRoutingModule } from './profiles-routing.module';
 import { ProfileWishlistComponent } from './screens/profile-wishlist/profile-wishlist.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 import { ProfileItemViewComponent } from './screens/profile-item-view/profile-item-view.component';
+import { ObservedProfilesComponent } from './screens/observed-profiles/observed-profiles.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ProfileItemViewComponent } from './screens/profile-item-view/profile-it
     ProfileWishlistComponent,
     ProfileCardComponent,
     ProfileItemViewComponent,
+    ObservedProfilesComponent,
   ],
   imports: [SharedModule, ReactiveFormsModule, ProfilesRoutingModule],
 })

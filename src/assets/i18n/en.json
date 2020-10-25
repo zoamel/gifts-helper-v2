@@ -4,11 +4,13 @@
     "SHOPPING_LIST": "Shopping List",
     "WISH_LIST": "Wishlist",
     "USERS_SEARCH": "Users Search",
+    "OBSERVED_PROFILES": "Observed profiles",
     "LOGOUT": "Logout",
     "SEND_FEEDBACK":"Send feddback",
     "SAVE": "Save",
     "SEND": "Send",
     "CANCEL": "Cancel",
+    "GO_BACK": "Go Back",
     "FORMS": {
       "OPTIONAL": "Optional",
       "FIELD_REQUIRED": "This field is required",

@@ -1,0 +1,36 @@
+<div
+  *ngIf="observedProfiles$ | async as observedProfiles"
+  class="observed-profiles__container"
+>
+  <p class="mat-title" *ngIf="observedProfiles && observedProfiles.length > 0">
+    {{ 'PROFILES.OBSERVED_USERS' | translate }}
+  </p>
+
+  <div
+    fxLayout.xs="column"
+    fxLayout="row"
+    fxLayoutGap="16px"
+    fxLayoutAlign.xs="center center"
+  >
+    <mat-card *ngFor="let userProfile of observedProfiles" class="user-card">
+      <mat-card-header fxLayoutAlign="start center">
+        <img
+          mat-card-avatar
+          [src]="userProfile.photoURL"
+          [alt]="userProfile.displayName"
+        />
+        <mat-card-title>{{ userProfile.displayName }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-actions class="user-card__actions" fxLayoutAlign="end center">
+        <button
+          mat-stroked-button
+          color="primary"
+          [routerLink]="['/profiles', userProfile.uid]"
+        >
+          See Wishlist
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+.observed-profiles {
+  &__container {
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__item {
+    cursor: pointer;
+    margin-bottom: 16px;
+  }
+
+  &__image {
+    max-width: 24px;
+    border-radius: 50%;
+  }
+
+  &__name {
+    font-size: 1rem;
+  }
+}
+
+.user-card {
+  width: 280px;
+
+  &__actions {
+    padding-top: 24px;
+  }
+}

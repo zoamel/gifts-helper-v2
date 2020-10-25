@@ -7,11 +7,17 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="!(isHandset$ | async)"
   >
-    <mat-toolbar>
-      {{
-        (isHandset$ | async) ? (authService.user$ | async)?.displayName : 'menu'
-      }}
+    <mat-toolbar fxLayoutAlign="center center">
+      {{ 'COMMON.APP_NAME' | translate }}
     </mat-toolbar>
+
+    <div class="menu-image-container" fxLayoutAlign="center center">
+      <img
+        src="assets/images/undraw_gift1_sgf8.svg"
+        class="menu-image"
+        alt="Gift"
+      />
+    </div>
 
     <mat-nav-list>
       <a
@@ -30,10 +36,20 @@
       </a>
       <a
         mat-list-item
-        [routerLink]="['/profiles']"
+        [routerLink]="['/profiles/search']"
+        [routerLinkActiveOptions]="{ exact: true }"
         routerLinkActive="router-link-active"
       >
         {{ 'COMMON.USERS_SEARCH' | translate }}
+      </a>
+      <a
+        mat-list-item
+        [routerLink]="['/profiles/observed']"
+        routerLinkActive="router-link-active"
+      >
+        {{ 'COMMON.OBSERVED_PROFILES' | translate }} ({{
+          (observedProfiles$ | async)?.length
+        }})
       </a>
     </mat-nav-list>
 
@@ -58,7 +74,6 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>{{ 'COMMON.APP_NAME' | translate }}</span>
       <div class="spacer"></div>
       <button
         *ngIf="!(isHandset$ | async) && (authService.user$ | async)"

@@ -1,10 +1,6 @@
 <div class="back-section">
-  <button
-    mat-flat-button
-    color="primary"
-    [routerLink]="['/profiles', profileId]"
-  >
-    {{ 'PROFILES.BACK_TO_PROFILE_WISHLIST' | translate }}
+  <button mat-flat-button color="primary" (click)="goBack()">
+    {{ 'COMMON.GO_BACK' | translate }}
   </button>
 </div>
 

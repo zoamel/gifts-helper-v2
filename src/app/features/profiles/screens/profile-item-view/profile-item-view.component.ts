@@ -1,4 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Location,
+  LocationStrategy,
+  PathLocationStrategy,
+} from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subscription } from 'rxjs';
@@ -11,6 +16,10 @@ import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-profile-item-view',
+  providers: [
+    Location,
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
+  ],
   templateUrl: './profile-item-view.component.html',
   styleUrls: ['./profile-item-view.component.scss'],
 })
@@ -21,6 +30,7 @@ export class ProfileItemViewComponent implements OnInit, OnDestroy {
   profileId: string | null;
   authUser: User | null | undefined;
   private authUserSubscription: Subscription | undefined;
+  location: Location;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,12 +38,14 @@ export class ProfileItemViewComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private profilesService: ProfilesService,
     private authService: AuthService,
-    private wishlistItemService: WishlistItemService
+    private wishlistItemService: WishlistItemService,
+    location: Location
   ) {
     this.requestInProgress$ = wishlistItemService.requestInProgress;
     this.item$ = wishlistItemService.item;
     this.itemId = route.snapshot.paramMap.get('itemId');
     this.profileId = route.snapshot.paramMap.get('id');
+    this.location = location;
   }
 
   ngOnInit(): void {
@@ -83,5 +95,9 @@ export class ProfileItemViewComponent implements OnInit, OnDestroy {
     if (this.authUser && this.itemId) {
       this.profilesService.unassignUser(this.itemId, this.authUser.uid);
     }
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
