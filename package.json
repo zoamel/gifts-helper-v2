@@ -28,7 +28,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "firebase": "^7.21.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
